@@ -1,11 +1,11 @@
 # Datos predefinidos
 encabezados_clientes = ['Id_clientes', 'Nombre', 'Apellido', 'DNI']
 clientes = [
-    [1, 'Juan', 'Pérez', '43664686'],
-    [2, 'Ana', 'López', '34686546'],
-    [3, 'Carlos', 'Gómez', '39605003'],
-    [4, 'María', 'Fernández', '41040550'],
-    [5, 'Lucía', 'Martínez', '37999439'],
+    [1, 'Pedro', 'González', '42123456'],
+    [2, 'Sofia', 'Rodríguez', '38765432'],
+    [3, 'Miguel', 'Torres', '40987654'],
+    [4, 'Valentina', 'Silva', '39456123'],
+    [5, 'Diego', 'Morales', '41789012'],
 ]
 
 encabezados_habitaciones = ['Nro_habitacion', 'Tipo', 'Capacidad', 'Estado']
