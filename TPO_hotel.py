@@ -1,4 +1,5 @@
 # Datos predefinidos
+
 encabezados_clientes = ['Id_clientes', 'Nombre', 'Apellido', 'DNI']
 clientes = [
     [1, 'Pedro', 'González', '42123456'],
@@ -26,13 +27,13 @@ reservas = [
     [5, 4, 5, '27/09/2025', '02/10/2025', True],
 ]
 
-# Listas paralelas de usuarios
-usuarios_nombre = ["usuario1", "usuario2"]
-usuarios_contrasena = ["1234", "5678"]
+usuarios = [
+    ["recepcionista1", "123"]
+]
 
 # Funciones login/registro
 
-def validarLogin(usuario_ingresado, contrasena_ingresada, usuarios_nombre, usuarios_contrasena):
+def validarLogin(usuario_ingresado, contrasena_ingresada, usuarios):
     login_exitoso = False # Por defecto se toma como que el login no es exitoso
     
     # Busca el usuario en la lista
@@ -40,10 +41,10 @@ def validarLogin(usuario_ingresado, contrasena_ingresada, usuarios_nombre, usuar
     usuario_encontrado = False
     contrasena_correcta = False
     
-    while usuario_encontrado == False and i<len(usuarios_nombre):
-        if usuarios_nombre[i] == usuario_ingresado:
+    while usuario_encontrado == False and i<len(usuarios):
+        if usuarios[i][0] == usuario_ingresado:
             usuario_encontrado = True
-            if usuarios_contrasena[i] == contrasena_ingresada:
+            if usuarios[i][1] == contrasena_ingresada:
                 #contrasena_correcta = True
                 login_exitoso = True # login_exitso pasa a ser True para el return de la funcion
         i+=1
@@ -71,9 +72,8 @@ def validarRegistro(usuario_nuevo, usuarios_nombre):
         
     return usuario_valido
 
-def agregarUsuarioNuevo(usuario_nuevo, contrasena_nueva, usuarios_nombre, usuarios_contrasena):
-    usuarios_nombre.append(usuario_nuevo)
-    usuarios_contrasena.append(contrasena_nueva)
+def agregarUsuarioNuevo(usuario_nuevo, contrasena_nueva, usuarios):
+    usuarios.append([usuario_nuevo, contrasena_nueva])
     
 def mostrarMenuLogin():
     print("------ Menú ------")
@@ -83,13 +83,13 @@ def mostrarMenuLogin():
     print("0. Salir")
     print()
     
-def ejecutarOpcionIniciarSesion(usuarios_nombre, usuarios_contrasena):
+def ejecutarOpcionIniciarSesion(usuarios):
     # Se ingresa el usuario y la contrasena
     print()
     usuario_ingresado = input("Ingrese nombre de usuario: ")
     contrasena_ingresada = input("Ingrese su contraseña: ")
     
-    login_exitoso = validarLogin(usuario_ingresado, contrasena_ingresada, usuarios_nombre, usuarios_contrasena)
+    login_exitoso = validarLogin(usuario_ingresado, contrasena_ingresada, usuarios)
 
     if login_exitoso:
         print("\n¡Inicio de sesión exitoso!")
@@ -101,26 +101,26 @@ def ejecutarOpcionIniciarSesion(usuarios_nombre, usuarios_contrasena):
         
     return login_exitoso
         
-def ejecutarOpcionRegistrarse(usuarios_nombre, usuarios_contrasena):
+def ejecutarOpcionRegistrarse(usuarios):
     usuario_valido = False
     while not usuario_valido:
         usuario_nuevo = input("Ingrese un nombre de usuario: ")
         
-        usuario_valido = validarRegistro(usuario_nuevo, usuarios_nombre)
+        usuario_valido = validarRegistro(usuario_nuevo, usuarios)
         
         if usuario_valido:
             # Se pide el ingreso de una contrasena para el nuevo usuario
             contrasena_nueva = input("Ingrese su contraseña: ")
             
             # Se actualiza las lista de usuarios y la de contrasenas
-            agregarUsuarioNuevo(usuario_nuevo, contrasena_nueva, usuarios_nombre, usuarios_contrasena)
+            agregarUsuarioNuevo(usuario_nuevo, contrasena_nueva, usuarios)
             
             # Se le notifica al usuario que el registro fue exitoso
             print("\nEl usuario se ha registrado exitosamente.\n")
         else:
             print("Ese nombre de usuario ya existe. Elija otro.")
 
-def mostrarIngresarMenuLogin(usuarios_nombre, usuarios_contrasena):
+def mostrarIngresarMenuLogin(usuarios):
     # Devuelve True si el login fue exitoso
     # Devuelve False si el usuario decidio salir
     
@@ -133,9 +133,9 @@ def mostrarIngresarMenuLogin(usuarios_nombre, usuarios_contrasena):
         opcion = input("Elija una opción: ")
 
         if opcion == "1": # (Iniciar sesion)
-            login_exitoso = ejecutarOpcionIniciarSesion(usuarios_nombre, usuarios_contrasena)
+            login_exitoso = ejecutarOpcionIniciarSesion(usuarios)
         elif opcion == "2": # (Registrarse)
-            ejecutarOpcionRegistrarse(usuarios_nombre, usuarios_contrasena)
+            ejecutarOpcionRegistrarse(usuarios)
         elif opcion == "0": # (Salir)
             salir_menu_login = True # Sale del ciclo del menu por opcion seleccionada
         else:
@@ -162,7 +162,7 @@ def darBajaReserva(id_reserva):
 
 # Programa Principal
 
-login_exitoso = mostrarIngresarMenuLogin(usuarios_nombre, usuarios_contrasena)
+login_exitoso = mostrarIngresarMenuLogin(usuarios)
 
 if login_exitoso:
     print("Inicio programa")
