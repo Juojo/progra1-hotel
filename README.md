@@ -25,3 +25,9 @@ pación por habitación, promedio de duración de reservas, y cantidad total de 
 lizadas en un período. El sistema deberá validar correctamente los datos ingresados (como 
 solapamiento  de  fechas  o  habitaciones  ya  ocupadas),  guardar  y  recuperar  información mediante archivos, utilizar Git para el control de versiones y contener pruebas unitarias que 
 aseguren la integridad de su funcionamiento.
+
+## Observaciones:
+- Hacer CRUD de clientes
+- Se tiene que poder dar de baja habitaciones, ej inundada
+- Se tiene que informar por que no se puede reservar una habitacion x
+- No usar busqueda secuencial hasta ver otras formas simplificadas
