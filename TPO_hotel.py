@@ -28,7 +28,8 @@ reservas = [
 ]
 
 usuarios = [
-    ["recepcionista1", "123"]
+    ["recepcionista1", "123"],
+    ["", ""]
 ]
 
 # Funciones login/registro
@@ -175,6 +176,11 @@ def mostrarIngresarVolverMenu():
     input()
 
     mostrarMenuPrincipal()
+
+def limpiarPantalla():
+    # \033 = ESC
+    print("\033[2J") # Limpia la pantalla
+    print("\033[H") # Mueve el cursor al home
 
 def mostrarIngresarMenuPrincipal(clientes):
     mostrarMenuPrincipal()
