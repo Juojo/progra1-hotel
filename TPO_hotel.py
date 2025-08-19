@@ -182,7 +182,7 @@ def limpiarPantalla():
     print("\033[2J") # Limpia la pantalla
     print("\033[H") # Mueve el cursor al home
 
-def mostrarIngresarMenuPrincipal(clientes):
+def mostrarIngresarMenuPrincipal(clientes, habitaciones, reservas):
     mostrarMenuPrincipal()
     
     opcion_seleccionada = "" # Se inicializa la variable
@@ -199,7 +199,7 @@ def mostrarIngresarMenuPrincipal(clientes):
         elif opcion_seleccionada == "4":
             mostrarClientes(clientes)
         elif opcion_seleccionada == "5":
-            pass
+            agregarReserva(reservas)
         elif opcion_seleccionada == "6":
             pass
         elif opcion_seleccionada == "7":
@@ -302,6 +302,9 @@ def agregarReserva(reservas):
     imprimirTituloOpcion("Agregar reserva")
 
     ingresarNuevaReserva(reservas)
+    print("La reserva se registro correctamente!")
+
+    mostrarIngresarVolverMenu()
 
 def ingresarNuevaReserva(reservas):
     print("Ingrese el ID del cliente que realiza la reserva: ", end="")
@@ -338,5 +341,5 @@ def darBajaReserva(reservas):
 login_exitoso = mostrarIngresarMenuLogin(usuarios)
 
 if login_exitoso:
-    mostrarIngresarMenuPrincipal(clientes)
+    mostrarIngresarMenuPrincipal(clientes, habitaciones, reservas)
 print("Fin programa")
