@@ -299,7 +299,33 @@ def mostrarClientes(clientes):
 # Reservas
 
 def agregarReserva(reservas):
-    pass
+    imprimirTituloOpcion("Agregar reserva")
+
+    ingresarNuevaReserva(reservas)
+
+def ingresarNuevaReserva(reservas):
+    print("Ingrese el ID del cliente que realiza la reserva: ", end="")
+    id_cliente = input()
+    print("Ingrese la habitacion de la reserva (ID): ", end="")
+    id_habitacion = input()
+    print("Ingrese la fecha de ingreso: ", end="")
+    fecha_ingreso = input()
+    print("Ingrese la fecha de egreso: ", end="")
+    fecha_egreso = input()
+
+    id_reserva = generarId(reservas)
+    estado = True
+
+    reservas.append([id_reserva, id_cliente, id_habitacion, fecha_ingreso, fecha_egreso, estado])
+
+def generarId(matriz):
+    nuevoId = 1
+
+    if len(matriz) != 0:
+        ultimoId = matriz[len(matriz)-1][0]
+        nuevoId = ultimoId + 1
+
+    return nuevoId
 
 def modificarReserva(reservas):
     pass
