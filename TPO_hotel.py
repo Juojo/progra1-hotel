@@ -201,7 +201,7 @@ def mostrarIngresarMenuPrincipal(clientes, habitaciones, reservas):
         elif opcion_seleccionada == "5":
             agregarReserva(reservas)
         elif opcion_seleccionada == "6":
-            pass
+            darBajaReserva(reservas)
         elif opcion_seleccionada == "7":
             pass
         elif opcion_seleccionada == "8":
@@ -334,7 +334,23 @@ def modificarReserva(reservas):
     pass
 
 def darBajaReserva(reservas):
-    pass
+    imprimirTituloOpcion("dar de baja una reserva")
+    
+    print("Ingrese la ID de la reserva que quiere dar de baja: ", end="")
+    id_reserva = input()
+
+    encontrado = False
+    i = 0
+    while i<len(reservas) and encontrado == False:
+        if reservas[i][0] == id_reserva:
+            encontrado = True
+            reservas[i][5] = False
+        i+=1
+
+    print("La reserva se dio de baja correctamente!")
+
+    mostrarIngresarVolverMenu()
+
 
 # Programa Principal
 
