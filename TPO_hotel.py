@@ -1,4 +1,4 @@
-from menus import *
+from menus import mostrarIngresarMenuLogin, mostrarIngresarMenuPrincipal
 
 # Datos predefinidos
 
@@ -33,60 +33,6 @@ usuarios = [
     ["recepcionista1", "123"],
     ["", ""]
 ]
-
-# FUNCIONES GENERALES DEL MENU
-
-def mostrarMenuPrincipal():
-        print('''
---- Sistema de Reservas de Hotel ---
-
-1. Agregar cliente
-2. Modificar cliente
-3. Borrar cliente
-4. Mostrar clientes
-5. Agregar reserva
-6. Cancelar reserva
-7. Modificar reserva
-8. Mostrar todas las reservas
-9. Ver estado de habitaciones
-10. Modificar estado de habitacion
--------------------------------
-0. Salir
-''')
-
-def mostrarIngresarMenuPrincipal(clientes, habitaciones, reservas):
-    mostrarMenuPrincipal()
-    
-    opcion_seleccionada = "" # Se inicializa la variable
-
-    while opcion_seleccionada != "0":
-        opcion_seleccionada = input("Seleccione una opción: ")
-        
-        if opcion_seleccionada == "1":
-            agregarCliente(clientes)
-        elif opcion_seleccionada == "2":
-            modificarCliente(clientes)
-        elif opcion_seleccionada == "3":
-            borrarCliente(clientes)
-        elif opcion_seleccionada == "4":
-            mostrarClientes(clientes)
-        elif opcion_seleccionada == "5":
-            agregarReserva(reservas)
-        elif opcion_seleccionada == "6":
-            darBajaReserva(reservas)
-        elif opcion_seleccionada == "7":
-            modificarReserva(reservas)
-        elif opcion_seleccionada == "8":
-            mostrarReservas(reservas)
-        elif opcion_seleccionada == "9":
-            pass
-        elif opcion_seleccionada == "10":
-            pass
-        else:
-            if opcion_seleccionada != "0":
-                print()
-                print("Opción no válida.")
-                print()
 
 # Programa Principal
 
