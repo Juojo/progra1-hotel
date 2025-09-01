@@ -4,10 +4,12 @@ from menus import mostrarIngresarVolverMenu
 def agregarCliente(clientes):
     dni = input("Ingrese el DNI del cliente:")
     existe = False
+    i = 0
     # Se busca si existe un cliente con ese DNI
-    for i in range(len(clientes)):
-        if clientes[i][3] == dni:
+    while i < len(clientes) and not existe:
+        if dni == clientes[i][3]:
             existe = True
+        i = i + 1
     if existe:
         print("Ya existe un cliente registrado con ese DNI.")
     else:
@@ -24,11 +26,14 @@ def agregarCliente(clientes):
 def borrarCliente(clientes):
     dni = input("Ingrese el DNI del cliente:")
     existe = False
+    i = 0
+    indice = -1
     # Se busca si existe un cliente con ese DNI
-    for i in range(len(clientes)):
-        if clientes[i][3] == dni:
+    while i < len(clientes) and not existe:
+        if dni == clientes[i][3]:
             existe = True
             indice = i  # Se guarda la posicion del cliente
+        i = i + 1
     if existe:
         clientes.pop(indice)
         print("Se ha borrado el cliente correctamente.")
@@ -39,11 +44,15 @@ def borrarCliente(clientes):
 def modificarCliente(clientes):
     dni = input("Ingrese el DNI del cliente: ")
     existe = False
+    i = 0
+    indice = -1
     # Se busca si existe un cliente con ese DNI
-    for i in range(len(clientes)):
-        if clientes[i][3] == dni:
+    while i < len(clientes) and not existe:
+        if dni == clientes[i][3]:
             existe = True
             indice = i
+        i = i + 1
+        
 
     if existe:
         nuevo_nombre = input("Ingrese el nuevo nombre del cliente: ")
@@ -53,9 +62,11 @@ def modificarCliente(clientes):
         # Se verifica que el nuevo DNI no esté repetido si no lo quiere cambiar
         if nuevo_dni != "0":  
             repetido = False
-            for j in range(len(clientes)):
+            j = 0
+            while j < len(clientes):
                 if j != indice and clientes[j][3] == nuevo_dni:
                     repetido = True
+                j = j + 1
 
             if repetido:
                 print("Error: ya existe otro cliente con ese DNI.")
