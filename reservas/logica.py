@@ -1,14 +1,15 @@
+from .datos import *
 from util import *
 
-def agregarReserva(reservas):
+def agregarReserva():
     imprimirTituloOpcion("Agregar reserva")
 
-    ingresarNuevaReserva(reservas)
+    ingresarNuevaReserva()
     print("La reserva se registro correctamente!")
 
     esperarVolverMenu()
 
-def ingresarNuevaReserva(reservas):
+def ingresarNuevaReserva():
     print("Ingrese el ID del cliente que realiza la reserva: ", end="")
     id_cliente = input()
     print("Ingrese la habitacion de la reserva (ID): ", end="")
@@ -18,7 +19,7 @@ def ingresarNuevaReserva(reservas):
     print("Ingrese la fecha de egreso: ", end="")
     fecha_egreso = input()
 
-    id_reserva = generarId(reservas)
+    id_reserva = generarId()
     estado = True
 
     reservas.append([id_reserva, id_cliente, id_habitacion, fecha_ingreso, fecha_egreso, estado])
@@ -32,7 +33,7 @@ def generarId(matriz):
 
     return nuevoId
 
-def modificarReserva(reservas):
+def modificarReserva():
     Id_reserva = int(input("Ingrese el ID de la reserva: "))
     existe = False
     # Se busca si existe una reserva con ese ID
@@ -68,14 +69,14 @@ def modificarReserva(reservas):
 
     esperarVolverMenu()
 
-def mostrarReservas(reservas):
+def mostrarReservas():
     print(f"{'ID':<10} {'Cliente':<10} {'Habitacion':<10} {'Ingreso':<10} {'Egreso':<10}")
     print("-" * 40)
     for reserva in reservas:
         print(f"{reserva[0]:<10} {reserva[1]:<10} {reserva[2]:<10} {reserva[3]} {reserva[4]} ")
     esperarVolverMenu()
 
-def darBajaReserva(reservas):
+def darBajaReserva():
     imprimirTituloOpcion("dar de baja una reserva")
     
     print("Ingrese la ID de la reserva que quiere dar de baja: ", end="")

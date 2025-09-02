@@ -56,7 +56,7 @@ def mostrarMenuPrincipal():
 0. Salir
 ''')
         
-def mostrarIngresarMenuPrincipal(habitaciones, reservas):
+def mostrarIngresarMenuPrincipal(habitaciones):
     mostrarMenuPrincipal()
     
     opcion_seleccionada = "" # Se inicializa la variable
@@ -73,13 +73,13 @@ def mostrarIngresarMenuPrincipal(habitaciones, reservas):
         elif opcion_seleccionada == "4":
             mostrarClientes()
         elif opcion_seleccionada == "5":
-            agregarReserva(reservas)
+            agregarReserva()
         elif opcion_seleccionada == "6":
-            darBajaReserva(reservas)
+            darBajaReserva()
         elif opcion_seleccionada == "7":
-            modificarReserva(reservas)
+            modificarReserva()
         elif opcion_seleccionada == "8":
-            mostrarReservas(reservas)
+            mostrarReservas()
         elif opcion_seleccionada == "9":
             pass
         elif opcion_seleccionada == "10":
