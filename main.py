@@ -2,15 +2,6 @@ from menus import mostrarIngresarMenuLogin, mostrarIngresarMenuPrincipal
 
 # Datos predefinidos
 
-encabezados_clientes = ['Id_clientes', 'Nombre', 'Apellido', 'DNI']
-clientes = [
-    [1, 'Pedro', 'González', '42123456'],
-    [2, 'Sofia', 'Rodríguez', '38765432'],
-    [3, 'Miguel', 'Torres', '40987654'],
-    [4, 'Valentina', 'Silva', '39456123'],
-    [5, 'Diego', 'Morales', '41789012'],
-]
-
 encabezados_habitaciones = ['Nro_habitacion', 'Tipo', 'Capacidad', 'Estado']
 habitaciones = [
     [1, 'Suite', '2', "Libre"],
@@ -39,5 +30,5 @@ usuarios = [
 login_exitoso = mostrarIngresarMenuLogin(usuarios)
 
 if login_exitoso:
-    mostrarIngresarMenuPrincipal(clientes, habitaciones, reservas)
+    mostrarIngresarMenuPrincipal(habitaciones, reservas)
 print("Fin programa")

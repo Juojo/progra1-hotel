@@ -56,7 +56,7 @@ def mostrarMenuPrincipal():
 0. Salir
 ''')
         
-def mostrarIngresarMenuPrincipal(clientes, habitaciones, reservas):
+def mostrarIngresarMenuPrincipal(habitaciones, reservas):
     mostrarMenuPrincipal()
     
     opcion_seleccionada = "" # Se inicializa la variable
@@ -65,13 +65,13 @@ def mostrarIngresarMenuPrincipal(clientes, habitaciones, reservas):
         opcion_seleccionada = input("Seleccione una opción: ")
         
         if opcion_seleccionada == "1":
-            agregarCliente(clientes)
+            agregarCliente()
         elif opcion_seleccionada == "2":
-            modificarCliente(clientes)
+            modificarCliente()
         elif opcion_seleccionada == "3":
-            borrarCliente(clientes)
+            borrarCliente()
         elif opcion_seleccionada == "4":
-            mostrarClientes(clientes)
+            mostrarClientes()
         elif opcion_seleccionada == "5":
             agregarReserva(reservas)
         elif opcion_seleccionada == "6":
