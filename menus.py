@@ -1,4 +1,4 @@
-from usuarios import *
+from usuarios import ejecutarOpcionIniciarSesion, ejecutarOpcionRegistrarse
 
 from clientes import *
 from reservas import *
@@ -14,7 +14,7 @@ def mostrarMenuLogin():
     print("0. Salir")
     print()
 
-def mostrarIngresarMenuLogin(usuarios):
+def mostrarIngresarMenuLogin():
     # Devuelve True si el login fue exitoso
     # Devuelve False si el usuario decidio salir
     
@@ -27,9 +27,9 @@ def mostrarIngresarMenuLogin(usuarios):
         opcion = input("Elija una opción: ")
 
         if opcion == "1": # (Iniciar sesion)
-            login_exitoso = ejecutarOpcionIniciarSesion(usuarios)
+            login_exitoso = ejecutarOpcionIniciarSesion()
         elif opcion == "2": # (Registrarse)
-            ejecutarOpcionRegistrarse(usuarios)
+            ejecutarOpcionRegistrarse()
         elif opcion == "0": # (Salir)
             salir_menu_login = True # Sale del ciclo del menu por opcion seleccionada
         else:

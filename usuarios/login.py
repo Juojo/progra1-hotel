@@ -1,10 +1,12 @@
-def ejecutarOpcionIniciarSesion(usuarios):
+from .datos import *
+
+def ejecutarOpcionIniciarSesion():
     # Se ingresa el usuario y la contrasena
     print()
     usuario_ingresado = input("Ingrese nombre de usuario: ")
     contrasena_ingresada = input("Ingrese su contraseña: ")
     
-    login_exitoso = validarLogin(usuario_ingresado, contrasena_ingresada, usuarios)
+    login_exitoso = validarLogin(usuario_ingresado, contrasena_ingresada)
 
     if login_exitoso:
         print("\n¡Inicio de sesión exitoso!")
@@ -16,7 +18,7 @@ def ejecutarOpcionIniciarSesion(usuarios):
         
     return login_exitoso
 
-def validarLogin(usuario_ingresado, contrasena_ingresada, usuarios):
+def validarLogin(usuario_ingresado, contrasena_ingresada):
     login_exitoso = False # Por defecto se toma como que el login no es exitoso
     
     # Busca el usuario en la lista

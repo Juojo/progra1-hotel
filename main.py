@@ -1,15 +1,8 @@
 from menus import mostrarIngresarMenuLogin, mostrarIngresarMenuPrincipal
 
-# Datos predefinidos
-
-usuarios = [
-    ["recepcionista1", "123"],
-    ["", ""]
-]
-
 # Programa Principal
 
-login_exitoso = mostrarIngresarMenuLogin(usuarios)
+login_exitoso = mostrarIngresarMenuLogin()
 
 if login_exitoso:
     mostrarIngresarMenuPrincipal()
