@@ -1,6 +1,8 @@
 from usuarios import *
+
 from clientes import *
 from reservas import *
+from habitaciones import *
 
 # Menus login
 
@@ -56,7 +58,7 @@ def mostrarMenuPrincipal():
 0. Salir
 ''')
         
-def mostrarIngresarMenuPrincipal(habitaciones):
+def mostrarIngresarMenuPrincipal():
     mostrarMenuPrincipal()
     
     opcion_seleccionada = "" # Se inicializa la variable
