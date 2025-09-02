@@ -1,4 +1,4 @@
-from usuarios import ejecutarOpcionIniciarSesion, ejecutarOpcionRegistrarse
+from usuarios import ejecutarOpcionIniciarSesion, ejecutarOpcionRegistrarse, usuarios
 
 from clientes import *
 from reservas import *
@@ -27,9 +27,9 @@ def mostrarIngresarMenuLogin():
         opcion = input("Elija una opción: ")
 
         if opcion == "1": # (Iniciar sesion)
-            login_exitoso = ejecutarOpcionIniciarSesion()
+            login_exitoso = ejecutarOpcionIniciarSesion(usuarios)
         elif opcion == "2": # (Registrarse)
-            ejecutarOpcionRegistrarse()
+            ejecutarOpcionRegistrarse(usuarios)
         elif opcion == "0": # (Salir)
             salir_menu_login = True # Sale del ciclo del menu por opcion seleccionada
         else:
@@ -67,21 +67,21 @@ def mostrarIngresarMenuPrincipal():
         opcion_seleccionada = input("Seleccione una opción: ")
         
         if opcion_seleccionada == "1":
-            agregarCliente()
+            agregarCliente(clientes)
         elif opcion_seleccionada == "2":
-            modificarCliente()
+            modificarCliente(clientes)
         elif opcion_seleccionada == "3":
-            borrarCliente()
+            borrarCliente(clientes)
         elif opcion_seleccionada == "4":
-            mostrarClientes()
+            mostrarClientes(clientes)
         elif opcion_seleccionada == "5":
-            agregarReserva()
+            agregarReserva(reservas)
         elif opcion_seleccionada == "6":
-            darBajaReserva()
+            darBajaReserva(reservas)
         elif opcion_seleccionada == "7":
-            modificarReserva()
+            modificarReserva(reservas)
         elif opcion_seleccionada == "8":
-            mostrarReservas()
+            mostrarReservas(reservas)
         elif opcion_seleccionada == "9":
             pass
         elif opcion_seleccionada == "10":

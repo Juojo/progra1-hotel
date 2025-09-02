@@ -1,3 +1,2 @@
-from .datos import *
 
 # Logica

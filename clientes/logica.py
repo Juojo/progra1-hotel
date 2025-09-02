@@ -1,7 +1,6 @@
-from .datos import *
 from util import *
 
-def agregarCliente():
+def agregarCliente(clientes):
     dni = input("Ingrese el DNI del cliente:")
     existe = False
     i = 0
@@ -23,7 +22,7 @@ def agregarCliente():
     print("Se agrego el cliente correctamente.")
     esperarVolverMenu()
 
-def borrarCliente():
+def borrarCliente(clientes):
     dni = input("Ingrese el DNI del cliente:")
     existe = False
     i = 0
@@ -41,7 +40,7 @@ def borrarCliente():
         print("Error. No hay un cliente registrado con ese DNI.")
     esperarVolverMenu()
 
-def modificarCliente():
+def modificarCliente(clientes):
     dni = input("Ingrese el DNI del cliente: ")
     existe = False
     i = 0
@@ -83,7 +82,7 @@ def modificarCliente():
     esperarVolverMenu()
     
 
-def mostrarClientes():
+def mostrarClientes(clientes):
     print(f"{'ID':<10} {'Nombre':<10} {'Apellido':<10} {'DNI'}")
     print("-" * 40)
     for cliente in clientes:

@@ -1,6 +1,4 @@
-from .datos import *
-
-def ejecutarOpcionRegistrarse():
+def ejecutarOpcionRegistrarse(usuarios):
     usuario_valido = False
     while not usuario_valido:
         usuario_nuevo = input("Ingrese un nombre de usuario: ")
@@ -12,7 +10,7 @@ def ejecutarOpcionRegistrarse():
             contrasena_nueva = input("Ingrese su contraseña: ")
             
             # Se actualiza las lista de usuarios y la de contrasenas
-            agregarUsuarioNuevo(usuario_nuevo, contrasena_nueva)
+            agregarUsuarioNuevo(usuario_nuevo, contrasena_nueva, usuarios)
             
             # Se le notifica al usuario que el registro fue exitoso
             print("\nEl usuario se ha registrado exitosamente.\n")
@@ -41,5 +39,5 @@ def validarRegistro(usuario_nuevo, usuarios_nombre):
         
     return usuario_valido
 
-def agregarUsuarioNuevo(usuario_nuevo, contrasena_nueva):
+def agregarUsuarioNuevo(usuario_nuevo, contrasena_nueva, usuarios):
     usuarios.append([usuario_nuevo, contrasena_nueva])
