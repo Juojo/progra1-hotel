@@ -31,3 +31,22 @@ aseguren la integridad de su funcionamiento.
 - Se tiene que poder dar de baja habitaciones, ej inundada
 - Se tiene que informar por que no se puede reservar una habitacion x
 - No usar busqueda secuencial hasta ver otras formas simplificadas
+
+progra1-hotel/
+│
+├── main.py
+├── menus/
+│   ├── __init__.py
+│   ├── menu_principal.py
+│   ├── menu_clientes.py
+│   ├── menu_reservas.py
+│   └── ... 
+├── clientes/
+│   ├── __init__.py
+│   ├── logica.py
+│   ├── datos.py
+├── reservas/
+│   ├── __init__.py
+│   ├── logica.py
+│   └── datos.py
+└── utils.py
