@@ -32,6 +32,7 @@ aseguren la integridad de su funcionamiento.
 - Se tiene que informar por que no se puede reservar una habitacion x
 - No usar busqueda secuencial hasta ver otras formas simplificadas
 
+```
 progra1-hotel/
 │
 ├── main.py
@@ -50,3 +51,4 @@ progra1-hotel/
 │   ├── logica.py
 │   └── datos.py
 └── utils.py
+```
