@@ -90,27 +90,4 @@ def mostrarIngresarMenuPrincipal(clientes, habitaciones, reservas):
                 print("Opción no válida.")
                 print()
 
-def mostrarMenuPrincipal():
-        print('''
---- Sistema de Reservas de Hotel ---
-
-1. Agregar cliente
-2. Modificar cliente
-3. Borrar cliente
-4. Mostrar clientes
-5. Agregar reserva
-6. Cancelar reserva
-7. Modificar reserva
-8. Mostrar todas las reservas
-9. Ver estado de habitaciones
-10. Modificar estado de habitacion
--------------------------------
-0. Salir
-''')
-        
-def mostrarIngresarVolverMenu():
-    # Volver al menu principal
-    print("\nPresione ENTER para volver al menú principal", end="")
-    input()
-
-    mostrarMenuPrincipal()
+        mostrarMenuPrincipal() # Muestra el print del menu principal luego de salir de la opcion seleccionada

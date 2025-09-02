@@ -1,5 +1,4 @@
 from util import *
-from menus import mostrarIngresarVolverMenu
 
 def agregarCliente(clientes):
     dni = input("Ingrese el DNI del cliente:")
@@ -21,7 +20,7 @@ def agregarCliente(clientes):
     nuevo_cliente = [nuevo_id, nombre, apellido, dni]
     clientes.append(nuevo_cliente)
     print("Se agrego el cliente correctamente.")
-    mostrarIngresarVolverMenu()
+    esperarVolverMenu()
 
 def borrarCliente(clientes):
     dni = input("Ingrese el DNI del cliente:")
@@ -39,7 +38,7 @@ def borrarCliente(clientes):
         print("Se ha borrado el cliente correctamente.")
     else:
         print("Error. No hay un cliente registrado con ese DNI.")
-    mostrarIngresarVolverMenu()
+    esperarVolverMenu()
 
 def modificarCliente(clientes):
     dni = input("Ingrese el DNI del cliente: ")
@@ -80,7 +79,7 @@ def modificarCliente(clientes):
     else:
         print("Error. No hay un cliente registrado con ese DNI.")
 
-    mostrarIngresarVolverMenu()
+    esperarVolverMenu()
     
 
 def mostrarClientes(clientes):
@@ -88,4 +87,4 @@ def mostrarClientes(clientes):
     print("-" * 40)
     for cliente in clientes:
         print(f"{cliente[0]:<10} {cliente[1]:<10} {cliente[2]:<10} {cliente[3]}")
-    mostrarIngresarVolverMenu()
+    esperarVolverMenu()
