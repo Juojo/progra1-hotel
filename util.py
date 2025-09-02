@@ -8,7 +8,7 @@ def limpiarPantalla():
     print("\033[2J") # Limpia la pantalla
     print("\033[H") # Mueve el cursor al home
 
-def mostrarIngresarVolverMenu():
+def esperarVolverMenu():
     # Volver al menu principal
     print("\nPresione ENTER para volver al menú principal", end="")
     input()

@@ -6,7 +6,7 @@ def agregarReserva(reservas):
     ingresarNuevaReserva(reservas)
     print("La reserva se registro correctamente!")
 
-    mostrarIngresarVolverMenu()
+    esperarVolverMenu()
 
 def ingresarNuevaReserva(reservas):
     print("Ingrese el ID del cliente que realiza la reserva: ", end="")
@@ -66,14 +66,14 @@ def modificarReserva(reservas):
     else:
         print("Error. No hay una reserva con ese ID.")
 
-    mostrarIngresarVolverMenu()
+    esperarVolverMenu()
 
 def mostrarReservas(reservas):
     print(f"{'ID':<10} {'Cliente':<10} {'Habitacion':<10} {'Ingreso':<10} {'Egreso':<10}")
     print("-" * 40)
     for reserva in reservas:
         print(f"{reserva[0]:<10} {reserva[1]:<10} {reserva[2]:<10} {reserva[3]} {reserva[4]} ")
-    mostrarIngresarVolverMenu()
+    esperarVolverMenu()
 
 def darBajaReserva(reservas):
     imprimirTituloOpcion("dar de baja una reserva")
@@ -91,4 +91,4 @@ def darBajaReserva(reservas):
 
     print("La reserva se dio de baja correctamente!")
 
-    mostrarIngresarVolverMenu()
+    esperarVolverMenu()
