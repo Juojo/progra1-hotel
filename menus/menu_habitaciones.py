@@ -24,7 +24,7 @@ def mostrarIngresarMenuHabitaciones(habitaciones):
         elif opcion_seleccionada == "2":
             modificarEstadoHabitacion(habitaciones)
         elif opcion_seleccionada == "3":
-            BajaHabitacion(habitaciones)
+            bajaHabitacion(habitaciones)
         else:
             if opcion_seleccionada != "0":
                 print()
