@@ -20,14 +20,11 @@ def mostrarIngresarMenuHabitaciones(habitaciones):
         opcion_seleccionada = input("Seleccione una opción: ")
         
         if opcion_seleccionada == "1":
-             pass
-            #mostrarHabitaciones(habitaciones)
+            mostrarHabitaciones(habitaciones)
         elif opcion_seleccionada == "2":
-             pass
-            #modificarEstadoHabitacion(habitaciones)
+            modificarEstadoHabitacion(habitaciones)
         elif opcion_seleccionada == "3":
-             pass
-            #BajaHabitacion(habitaciones)
+            BajaHabitacion(habitaciones)
         else:
             if opcion_seleccionada != "0":
                 print()

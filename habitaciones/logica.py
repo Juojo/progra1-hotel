@@ -28,7 +28,7 @@ def modificarEstadoHabitacion(habitaciones):
 
     esperarVolverMenu()
 
-def BajaHabitacion(habitaciones):
+def bajaHabitacion(habitaciones):
     id = int(input("Ingrese el Nro. de habitación: "))
     existe = False
     i = 0
