@@ -1,19 +1,18 @@
-from reservas import *
+from habitaciones import *
 
-def mostrarMenuReservas():
+def mostrarMenuHabitaciones():
         print('''
---- Menú Reservas ---
+--- Menú Habitaciones ---
 
-1. Agregar Reserva
-2. Modificar Reserva
-3. Cancelar Reserva
-4. Mostrar Reservas
+1. Mostrar habitaciones
+2. Modificar estado de habitacion
+3. Dar de baja habitacion
 -------------------------------
 0. Salir
 ''')
         
-def mostrarIngresarMenuReservas(reservas):
-    mostrarMenuReservas()
+def mostrarIngresarMenuHabitaciones(habitaciones):
+    mostrarMenuHabitaciones()
     
     opcion_seleccionada = "" # Se inicializa la variable
 
@@ -22,20 +21,17 @@ def mostrarIngresarMenuReservas(reservas):
         
         if opcion_seleccionada == "1":
              pass
-            #agregarReserva(reserva)
+            #mostrarHabitaciones(habitaciones)
         elif opcion_seleccionada == "2":
              pass
-            #modificarReserva(reserva)
+            #modificarEstadoHabitacion(habitaciones)
         elif opcion_seleccionada == "3":
              pass
-            #cancelarReserva(reserva)
-        elif opcion_seleccionada == "4":
-             pass
-            #mostrarReservas(reserva)
+            #BajaHabitacion(habitaciones)
         else:
             if opcion_seleccionada != "0":
                 print()
                 print("Opción no válida.")
                 print()
 
-        mostrarMenuReservas() # Muestra el print del menu luego de salir de la opcion seleccionada
+        mostrarMenuHabitaciones() # Muestra el print del menu luego de salir de la opcion seleccionada
