@@ -1,4 +1,7 @@
-from menus import *
+from menus.menu_principal import mostrarIngresarMenuLogin, mostrarIngresarMenuPrincipal
+from clientes.datos import clientes
+from reservas.datos import reservas
+from habitaciones.datos import habitaciones
 
 # Programa Principal
 
