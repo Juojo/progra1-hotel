@@ -1,7 +1,7 @@
 from usuarios import ejecutarOpcionIniciarSesion, ejecutarOpcionRegistrarse, usuarios
-from menu_clientes import *
-from menu_reservas import *
-from menu_habitaciones import *
+from .menu_clientes import *
+from .menu_reservas import *
+from .menu_habitaciones import *
 
 # Menus login
 
