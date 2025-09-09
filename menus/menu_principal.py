@@ -1,7 +1,7 @@
 from usuarios import ejecutarOpcionIniciarSesion, ejecutarOpcionRegistrarse, usuarios
-from clientes import *
-from reservas import *
-from habitaciones import *
+from menu_clientes import *
+from menu_reservas import *
+from menu_habitaciones import *
 
 # Menus login
 
@@ -43,21 +43,14 @@ def mostrarMenuPrincipal():
         print('''
 --- Sistema de Reservas de Hotel ---
 
-1. Agregar cliente
-2. Modificar cliente
-3. Borrar cliente
-4. Mostrar clientes
-5. Agregar reserva
-6. Cancelar reserva
-7. Modificar reserva
-8. Mostrar todas las reservas
-9. Ver estado de habitaciones
-10. Modificar estado de habitacion
+1. Menu Clientes
+2. Menu Habitaciones
+3. Menu Reservas
 -------------------------------
 0. Salir
 ''')
         
-def mostrarIngresarMenuPrincipal():
+def mostrarIngresarMenuPrincipal(clientes, reservas, habitaciones):
     mostrarMenuPrincipal()
     
     opcion_seleccionada = "" # Se inicializa la variable
@@ -66,25 +59,11 @@ def mostrarIngresarMenuPrincipal():
         opcion_seleccionada = input("Seleccione una opción: ")
         
         if opcion_seleccionada == "1":
-            agregarCliente(clientes)
+            mostrarIngresarMenuClientes(clientes)
         elif opcion_seleccionada == "2":
-            modificarCliente(clientes)
+            mostrarIngresarMenuReservas(reservas)
         elif opcion_seleccionada == "3":
-            borrarCliente(clientes)
-        elif opcion_seleccionada == "4":
-            mostrarClientes(clientes)
-        elif opcion_seleccionada == "5":
-            agregarReserva(reservas)
-        elif opcion_seleccionada == "6":
-            darBajaReserva(reservas)
-        elif opcion_seleccionada == "7":
-            modificarReserva(reservas)
-        elif opcion_seleccionada == "8":
-            mostrarReservas(reservas)
-        elif opcion_seleccionada == "9":
-            pass
-        elif opcion_seleccionada == "10":
-            pass
+            mostrarIngresarMenuHabitaciones(habitaciones)
         else:
             if opcion_seleccionada != "0":
                 print()

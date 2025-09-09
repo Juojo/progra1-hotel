@@ -21,17 +21,13 @@ def mostrarIngresarMenuReservas(reservas):
         opcion_seleccionada = input("Seleccione una opción: ")
         
         if opcion_seleccionada == "1":
-             pass
-            #agregarReserva(reserva)
+            agregarReserva(reservas)
         elif opcion_seleccionada == "2":
-             pass
-            #modificarReserva(reserva)
+            modificarReserva(reservas)
         elif opcion_seleccionada == "3":
-             pass
-            #cancelarReserva(reserva)
+            darBajaReserva(reservas)
         elif opcion_seleccionada == "4":
-             pass
-            #mostrarReservas(reserva)
+            mostrarReservas(reservas)
         else:
             if opcion_seleccionada != "0":
                 print()
