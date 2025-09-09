@@ -1,9 +1,9 @@
-from menus.menu_principal import mostrarIngresarMenuLogin, mostrarIngresarMenuPrincipal
+from menus import *
 
 # Programa Principal
 
 login_exitoso = mostrarIngresarMenuLogin()
 
 if login_exitoso:
-    mostrarIngresarMenuPrincipal()
+    mostrarIngresarMenuPrincipal(clientes, reservas, habitaciones)
 print("Fin programa")

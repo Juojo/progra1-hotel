@@ -9,7 +9,7 @@ def mostrarMenuClientes():
 3. Borrar cliente
 4. Mostrar clientes
 -------------------------------
-0. Salir
+0. Volver
 ''')
         
 def mostrarIngresarMenuClientes(clientes):

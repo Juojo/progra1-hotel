@@ -9,7 +9,7 @@ def mostrarMenuHabitaciones():
 3. Dar de baja habitacion
 4. Mostrar habitaciones no disponibles
 -------------------------------
-0. Salir
+0. Volver
 ''')
         
 def mostrarIngresarMenuHabitaciones(habitaciones):

@@ -1,7 +1,7 @@
 from usuarios import ejecutarOpcionIniciarSesion, ejecutarOpcionRegistrarse, usuarios
-from menu_clientes import *
-from menu_reservas import *
-from menu_habitaciones import *
+from .menu_clientes import *
+from .menu_reservas import *
+from .menu_habitaciones import *
 
 # Menus login
 
@@ -44,8 +44,8 @@ def mostrarMenuPrincipal():
 --- Sistema de Reservas de Hotel ---
 
 1. Menu Clientes
-2. Menu Habitaciones
-3. Menu Reservas
+2. Menu Reservas
+3. Menu Habitaciones
 -------------------------------
 0. Salir
 ''')

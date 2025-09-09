@@ -9,7 +9,7 @@ def mostrarMenuReservas():
 3. Cancelar Reserva
 4. Mostrar Reservas
 -------------------------------
-0. Salir
+0. Volver
 ''')
         
 def mostrarIngresarMenuReservas(reservas):
