@@ -12,7 +12,7 @@ def mostrarMenuReservas():
 0. Volver
 ''')
         
-def mostrarIngresarMenuReservas(reservas):
+def mostrarIngresarMenuReservas(reservas, habitaciones, clientes):
     mostrarMenuReservas()
     
     opcion_seleccionada = "" # Se inicializa la variable
@@ -21,7 +21,7 @@ def mostrarIngresarMenuReservas(reservas):
         opcion_seleccionada = input("Seleccione una opción: ")
         
         if opcion_seleccionada == "1":
-            agregarReserva(reservas)
+            agregarReserva(reservas, habitaciones, clientes)
         elif opcion_seleccionada == "2":
             modificarReserva(reservas)
         elif opcion_seleccionada == "3":

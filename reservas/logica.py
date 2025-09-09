@@ -10,10 +10,10 @@ def calcularPrecio(precio_habitacion, fecha_ingreso, fecha_egreso):
     calcular = lambda precio, dias: precio * dias
     return calcular(precio_habitacion, dias)
 
-def agregarReserva():
+def agregarReserva(reservas, habitaciones, clientes):
     imprimirTituloOpcion("Agregar reserva")
 
-    ingresarNuevaReserva()
+    ingresarNuevaReserva(reservas, habitaciones, clientes)
     print("La reserva se registro correctamente!")
 
     esperarVolverMenu()
