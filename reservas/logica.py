@@ -1,5 +1,15 @@
 from util import *
 
+def calcularPrecio(precio_habitacion, fecha_ingreso, fecha_egreso):
+    # Sacamos solo el día
+    dia_ingreso = int(fecha_ingreso[:2])
+    dia_egreso = int(fecha_egreso[:2])
+    dias = dia_egreso - dia_ingreso
+
+    # Lambda para calcular el total
+    calcular = lambda precio, dias: precio * dias
+    return calcular(precio_habitacion, dias)
+
 def agregarReserva():
     imprimirTituloOpcion("Agregar reserva")
 
@@ -8,20 +18,33 @@ def agregarReserva():
 
     esperarVolverMenu()
 
-def ingresarNuevaReserva(reservas):
+def ingresarNuevaReserva(reservas, habitaciones, clientes):
     print("Ingrese el ID del cliente que realiza la reserva: ", end="")
-    id_cliente = input()
+    id_cliente = int(input())
     print("Ingrese la habitacion de la reserva (ID): ", end="")
-    id_habitacion = input()
-    print("Ingrese la fecha de ingreso: ", end="")
+    id_habitacion = int(input())
+    print("Ingrese la fecha de ingreso (dd/mm/yyyy): ", end="")
     fecha_ingreso = input()
-    print("Ingrese la fecha de egreso: ", end="")
+    print("Ingrese la fecha de egreso (dd/mm/yyyy): ", end="")
     fecha_egreso = input()
 
-    id_reserva = generarId()
+    id_reserva = generarId(reservas)
     estado = True
 
-    reservas.append([id_reserva, id_cliente, id_habitacion, fecha_ingreso, fecha_egreso, estado])
+    # Buscar el precio de la habitación
+    habitacion = list(filter(lambda h: h[0] == id_habitacion, habitaciones))[0] # Devuelve la primera posicion de la lista
+    precio_habitacion = habitacion[4]
+
+    # Calcular precio total
+    precio_total = calcularPrecio(precio_habitacion, fecha_ingreso, fecha_egreso)
+
+    # Se guarda la reserva
+    reservas.append([id_reserva, id_cliente, id_habitacion, fecha_ingreso, fecha_egreso, estado, precio_total])
+
+    # Busca el nombre del cliente
+    cliente = list(filter(lambda c: c[0] == id_cliente, clientes))[0] # Devuelve la primera posicion de la lista
+    print(f"Reserva registrada para {cliente[1]} {cliente[2]} con un costo total de ${precio_total}")
+
 
 def generarId(matriz):
     nuevoId = 1
@@ -69,10 +92,10 @@ def modificarReserva(reservas):
     esperarVolverMenu()
 
 def mostrarReservas(reservas):
-    print(f"{'ID':<10} {'Cliente':<10} {'Habitacion':<10} {'Ingreso':<10} {'Egreso':<10}")
+    print(f"{'ID':<10} {'Cliente':<10} {'Habitacion':<10} {'Ingreso':<10} {'Egreso':<10} {'Precio Total'}")
     print("-" * 40)
     for reserva in reservas:
-        print(f"{reserva[0]:<10} {reserva[1]:<10} {reserva[2]:<10} {reserva[3]} {reserva[4]} ")
+        print(f"{reserva[0]:<10} {reserva[1]:<10} {reserva[2]:<10} {reserva[3]:<10} {reserva[4]:<10} {reserva[6]}")
     esperarVolverMenu()
 
 def darBajaReserva(reservas):
