@@ -1,4 +1,4 @@
-from menus import mostrarIngresarMenuLogin, mostrarIngresarMenuPrincipal
+from menus.menu_principal import mostrarIngresarMenuLogin, mostrarIngresarMenuPrincipal
 
 # Programa Principal
 
