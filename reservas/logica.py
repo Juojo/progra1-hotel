@@ -57,31 +57,31 @@ def generarId(matriz):
 
 def modificarReserva(reservas):
     Id_reserva = int(input("Ingrese el ID de la reserva: "))
-    existe = False
-    # Se busca si existe una reserva con ese ID
-    for i in range(len(reservas)):
-        if reservas[i][0] == Id_reserva:
-            existe = True
-            indice = i
 
-    if existe:
+     # Se crea una lista con todos los IDs de reservas
+    ids = [reserva[0] for reserva in reservas]
+
+    # Se busca si hay una reserva con ese ID
+    if Id_reserva in ids:
+        
+        indice = ids.index(Id_reserva)  # Obtenemos el indice de la reserva con .index
+
         nuevo_cliente = input("Ingrese el nuevo cliente de la reserva: ")
         nueva_fecha_ingreso = input("Ingrese la nueva fecha de ingreso: ")
         nueva_fecha_egreso = input("Ingrese la nueva fecha de egreso: ")
         nueva_habitacion = int(input("Ingrese la nueva habitacion del cliente (0 si no quiere modificarla): "))
-        # Se verifica que la nueva habitacion no este ocupada o si no se quiere cambiar
-        if nueva_habitacion != 0:  
-            repetido = False
-            for j in range(len(reservas)):
-                if j != indice and reservas[j][2] == nueva_habitacion and reservas[j][5] == True:
-                    repetido = True
 
-            if repetido:
+        # Se verifica que la nueva habitacion no esté ocupada o si no se quiere cambiar
+        if nueva_habitacion != 0:
+            # Creamos una lista con las habitaciones ocupadas
+            ocupadas = [r[2] for r in reservas if r[5] and r != reservas[indice]]
+
+            if nueva_habitacion in ocupadas:
                 print("Error: La habitacion ya esta ocupada.")
                 return reservas
             else:
                 reservas[indice][2] = nueva_habitacion
-            
+
         reservas[indice][1] = nuevo_cliente
         reservas[indice][3] = nueva_fecha_ingreso
         reservas[indice][4] = nueva_fecha_egreso  
