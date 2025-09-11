@@ -83,8 +83,9 @@ def modificarCliente(clientes):
     
 
 def mostrarClientes(clientes):
-    print(f"{'ID':<10} {'Nombre':<10} {'Apellido':<10} {'DNI'}")
-    print("-" * 40)
+    print("-" * 68)
+    print(f"{'ID':<10} {'Nombre':<20} {'Apellido':<20} {'DNI':>15}")
+    print("-" * 68)
     for cliente in clientes:
-        print(f"{cliente[0]:<10} {cliente[1]:<10} {cliente[2]:<10} {cliente[3]}")
+        print(f"{cliente[0]:<10} {cliente[1]:<20} {cliente[2]:<20} {cliente[3]:>15}")
     esperarVolverMenu()

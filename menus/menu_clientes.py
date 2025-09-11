@@ -1,16 +1,18 @@
 from clientes import *
 
 def mostrarMenuClientes():
-        print('''
---- Menú Clientes ---
-
+    print("""
+----------------------------------------
+               Menú Clientes
+----------------------------------------
 1. Agregar cliente
 2. Modificar cliente
 3. Borrar cliente
 4. Mostrar clientes
--------------------------------
+----------------------------------------
 0. Volver
-''')
+----------------------------------------
+""")
         
 def mostrarIngresarMenuClientes(clientes):
     mostrarMenuClientes()

@@ -92,10 +92,11 @@ def modificarReserva(reservas):
     esperarVolverMenu()
 
 def mostrarReservas(reservas):
-    print(f"{'ID':<10} {'Cliente':<10} {'Habitacion':<10} {'Ingreso':<10} {'Egreso':<10} {'Precio Total'}")
-    print("-" * 40)
+    print("-" * 70)
+    print(f"{'ID':<10} {'Cliente':<10} {'Habitacion':<10} {'Ingreso':<10} {'Egreso':<10} {'Precio Total':>15}")
+    print("-" * 70)
     for reserva in reservas:
-        print(f"{reserva[0]:<10} {reserva[1]:<10} {reserva[2]:<10} {reserva[3]:<10} {reserva[4]:<10} {reserva[6]}")
+        print(f"{reserva[0]:<10} {reserva[1]:<10} {reserva[2]:<10} {reserva[3]:<10} {reserva[4]:<10} {reserva[6]:>15}")
     esperarVolverMenu()
 
 def darBajaReserva(reservas):

@@ -1,10 +1,11 @@
 from util import *
 
 def mostrarHabitaciones(habitaciones):
-    print(f"{'Nro_habitación':<10} {'Tipo':<10} {'Capacidad':<10} {'Estado':<10} {'Precio'}")
-    print("-" * 40)
+    print("-" * 66)
+    print(f"{'Nro_habitación':<15} {'Tipo':<15} {'Capacidad':<10} {'Estado':<12} {'Precio':>10}")
+    print("-" * 66)
     for habitacion in habitaciones:
-        print(f"{habitacion[0]:<10} {habitacion[1]:<10} {habitacion[2]:<10} {habitacion[3]:<10} {habitacion[4]}")
+        print(f"{habitacion[0]:<15} {habitacion[1]:<15} {habitacion[2]:<10} {habitacion[3]:<12} {habitacion[4]:>10}")
     esperarVolverMenu()
 
 def modificarEstadoHabitacion(habitaciones):
@@ -56,8 +57,9 @@ def bajaHabitacion(habitaciones, habitaciones_baja):
     esperarVolverMenu()
 
 def mostrarHabitacionesBaja(habitaciones_baja):
-    print(f"{'Nro_habitación':<10} {'Tipo':<10} {'Capacidad':<10} {'Estado':<10} {'Precio':<10} {'Razón'}")
-    print("-" * 40)
+    print("-" * 87)
+    print(f"{'Nro_habitación':<15} {'Tipo':<15} {'Capacidad':<10} {'Estado':<12} {'Precio':<10} {'Razón':>20}")
+    print("-" * 87)
     for habitacion in habitaciones_baja:
-        print(f"{habitacion[0]:<10} {habitacion[1]:<10} {habitacion[2]:<10} {habitacion[3]:<10} {habitacion[4]:<10} {habitacion[5]}")
+        print(f"{habitacion[0]:<15} {habitacion[1]:<15} {habitacion[2]:<10} {habitacion[3]:<12} {habitacion[4]:<10} {habitacion[5]:>20}")
     esperarVolverMenu()

@@ -1,16 +1,18 @@
 from reservas import *
 
 def mostrarMenuReservas():
-        print('''
---- Menú Reservas ---
-
+    print("""
+----------------------------------------
+               Menú Reservas
+----------------------------------------
 1. Agregar Reserva
 2. Modificar Reserva
 3. Cancelar Reserva
 4. Mostrar Reservas
--------------------------------
+----------------------------------------
 0. Volver
-''')
+----------------------------------------
+""")
         
 def mostrarIngresarMenuReservas(reservas, habitaciones, clientes):
     mostrarMenuReservas()

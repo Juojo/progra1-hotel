@@ -6,12 +6,17 @@ from .menu_habitaciones import *
 # Menus login
 
 def mostrarMenuLogin():
-    print("------ Menú ------")
-    print("1. Iniciar sesión")
-    print("2. Registrarse")
-    print("------------------")
-    print("0. Salir")
-    print()
+    print("""
+----------------------------------------
+          Sistema de Gestión
+               Hotelera
+----------------------------------------
+1. Iniciar sesión
+2. Registrarse
+----------------------------------------
+0. Salir
+----------------------------------------
+""")
 
 def mostrarIngresarMenuLogin():
     # Devuelve True si el login fue exitoso
@@ -40,15 +45,18 @@ def mostrarIngresarMenuLogin():
 # Menus principal
 
 def mostrarMenuPrincipal():
-        print('''
---- Sistema de Reservas de Hotel ---
-
-1. Menu Clientes
-2. Menu Reservas
-3. Menu Habitaciones
--------------------------------
+    print("""
+----------------------------------------
+            Menú Principal
+----------------------------------------
+1. Clientes
+2. Reservas
+3. Habitaciones
+----------------------------------------
 0. Salir
-''')
+----------------------------------------
+""")
+
         
 def mostrarIngresarMenuPrincipal(clientes, reservas, habitaciones):
     mostrarMenuPrincipal()

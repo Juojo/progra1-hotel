@@ -1,16 +1,18 @@
 from habitaciones import *
 
 def mostrarMenuHabitaciones():
-        print('''
---- Menú Habitaciones ---
-
+    print("""
+----------------------------------------
+           Menú Habitaciones
+----------------------------------------
 1. Mostrar habitaciones
 2. Modificar estado de habitacion
 3. Dar de baja habitacion
 4. Mostrar habitaciones no disponibles
--------------------------------
+----------------------------------------
 0. Volver
-''')
+----------------------------------------
+""")
         
 def mostrarIngresarMenuHabitaciones(habitaciones):
     mostrarMenuHabitaciones()
