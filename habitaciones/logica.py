@@ -8,21 +8,20 @@ def mostrarHabitaciones(habitaciones):
     esperarVolverMenu()
 
 def modificarEstadoHabitacion(habitaciones):
-    id = int(input("Ingrese el Nro. de habitación: "))
-    existe = False
-    i = 0
-    indice = -1
-    # Se busca si existe una habitacion con ese nro
-    while i < len(habitaciones) and not existe:
-        if id == habitaciones[i][0]:
-            existe = True
-            indice = i
-        i = i + 1
+    id_habitacion = int(input("Ingrese el Nro. de habitación: "))
+
+    # Creamos una lista con todos los numeros de habitacion
+    numeros = [hab[0] for hab in habitaciones]
+
+    # Verificamos si el numero ingresado existe en la lista de habitaciones
+    if id_habitacion in numeros:
         
-    if existe:
+        indice = numeros.index(id_habitacion) # Obtenemos el indice de la habitacion con .index 
+
         nuevo_estado = input("Ingrese el nuevo estado de la habitación: ")
-        habitaciones[indice][3] = nuevo_estado
-        print("Se han modificado el estado de la habitación correctamente.")
+        habitaciones[indice][3] = nuevo_estado  # Modificamos el estado de la habitacion
+
+        print("Se han modificado el estado de la habitacion correctamente.")
     else:
         print("Error. No hay habitación con ese Nro.")
 
