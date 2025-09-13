@@ -10,5 +10,5 @@ def limpiarPantalla():
 
 def esperarVolverMenu():
     # Volver al menu principal
-    print("\nPresione ENTER para volver al menú principal", end="")
+    print("\nPresione ENTER para volver al menú anterior", end="")
     input()

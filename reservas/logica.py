@@ -1,14 +1,20 @@
 from util import *
+from datetime import date
 
 def calcularPrecio(precio_habitacion, fecha_ingreso, fecha_egreso):
-    # Sacamos solo el día
-    dia_ingreso = int(fecha_ingreso[:2])
-    dia_egreso = int(fecha_egreso[:2])
-    dias = dia_egreso - dia_ingreso
+    extraerDia = lambda fecha_string: int(fecha_string[:2])
+    extraerMes = lambda fecha_string: int(fecha_string[3:5])
+    extraerAnio = lambda fecha_string: int(fecha_string[-4:])
+
+    print(extraerDia(fecha_ingreso))
+
+    date_fecha_ingreso = date(extraerAnio(fecha_ingreso), extraerMes(fecha_ingreso), extraerDia(fecha_ingreso))
+    date_fecha_egreso = date(extraerAnio(fecha_egreso), extraerMes(fecha_egreso), extraerDia(fecha_egreso))
+    delta = date_fecha_egreso - date_fecha_ingreso
 
     # Lambda para calcular el total
     calcular = lambda precio, dias: precio * dias
-    return calcular(precio_habitacion, dias)
+    return calcular(precio_habitacion, delta.days)
 
 def agregarReserva(reservas, habitaciones, clientes):
     imprimirTituloOpcion("Agregar reserva")
@@ -95,8 +101,11 @@ def mostrarReservas(reservas):
     print("-" * 70)
     print(f"{'ID':<10} {'Cliente':<10} {'Habitacion':<10} {'Ingreso':<10} {'Egreso':<10} {'Precio Total':>15}")
     print("-" * 70)
+
+    validarPrint = lambda valor: valor if valor != None else "No encontrado"
+
     for reserva in reservas:
-        print(f"{reserva[0]:<10} {reserva[1]:<10} {reserva[2]:<10} {reserva[3]:<10} {reserva[4]:<10} {reserva[6]:>15}")
+        print(f"{validarPrint(reserva[0]):<10} {validarPrint(reserva[1]):<10} {validarPrint(reserva[2]):<10} {validarPrint(reserva[3]):<10} {validarPrint(reserva[4]):<10} {validarPrint(reserva[6]):>15}")
     esperarVolverMenu()
 
 def darBajaReserva(reservas):
