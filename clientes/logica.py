@@ -42,37 +42,28 @@ def borrarCliente(clientes):
 
 def modificarCliente(clientes):
     dni = input("Ingrese el DNI del cliente: ")
-    existe = False
-    i = 0
-    indice = -1
-    # Se busca si existe un cliente con ese DNI
-    while i < len(clientes) and not existe:
-        if dni == clientes[i][3]:
-            existe = True
-            indice = i
-        i = i + 1
-        
 
-    if existe:
+      # Creamos una lista con todos los DNIs de los clientes
+    dnis = [c[3] for c in clientes]
+
+    # Verificamos si el DNI ingresado existe
+    if dni in dnis:
+      
+        indice = dnis.index(dni) # Obtenemos el indice del cliente con .index
+
         nuevo_nombre = input("Ingrese el nuevo nombre del cliente: ")
         nuevo_apellido = input("Ingrese el nuevo apellido del cliente: ")
         nuevo_dni = input("Ingrese el nuevo DNI del cliente (0 si no quiere modificarlo): ")
 
-        # Se verifica que el nuevo DNI no esté repetido si no lo quiere cambiar
-        if nuevo_dni != "0":  
-            repetido = False
-            j = 0
-            while j < len(clientes):
-                if j != indice and clientes[j][3] == nuevo_dni:
-                    repetido = True
-                j = j + 1
-
-            if repetido:
+        # Se verifica que el nuevo DNI no este repetido si se quiere cambiar
+        if nuevo_dni != "0":
+            if nuevo_dni in dnis and dnis.index(nuevo_dni) != indice:
                 print("Error: ya existe otro cliente con ese DNI.")
                 return clientes
             else:
-                clientes[indice][3] = nuevo_dni
-            
+                clientes[indice][3] = nuevo_dni 
+
+        # Actualizamos nombre y apellido
         clientes[indice][1] = nuevo_nombre
         clientes[indice][2] = nuevo_apellido  
         print("Se han modificado los datos del cliente correctamente.")
