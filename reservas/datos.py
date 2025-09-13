@@ -1,3 +1,5 @@
+from .logica import calcularPrecio, buscarPrecioHabitacion
+
 encabezados_reservas = ['Id_reserva', 'Cliente', 'Habitacion', 'Fecha_ingreso', 'Fecha_egreso', 'Estado', 'Precio_total']
 reservas = [
     [1, 1, 3, '04/07/2025', '12/07/2025', True, None],
@@ -6,3 +8,8 @@ reservas = [
     [4, 5, 4, '02/11/2025', '06/11/2025', True, None],
     [5, 4, 5, '27/09/2025', '02/10/2025', True, None],
 ]
+
+# Esta funcion se ejecuta por unica vez cuando se corre el programa.
+def generarPrecioTotalReservasDefault(habitaciones):
+    for reserva in reservas:
+        reserva[6] = calcularPrecio(buscarPrecioHabitacion(2, habitaciones), reserva[3], reserva[4])

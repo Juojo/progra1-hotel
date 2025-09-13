@@ -6,8 +6,6 @@ def calcularPrecio(precio_habitacion, fecha_ingreso, fecha_egreso):
     extraerMes = lambda fecha_string: int(fecha_string[3:5])
     extraerAnio = lambda fecha_string: int(fecha_string[-4:])
 
-    print(extraerDia(fecha_ingreso))
-
     date_fecha_ingreso = date(extraerAnio(fecha_ingreso), extraerMes(fecha_ingreso), extraerDia(fecha_ingreso))
     date_fecha_egreso = date(extraerAnio(fecha_egreso), extraerMes(fecha_egreso), extraerDia(fecha_egreso))
     delta = date_fecha_egreso - date_fecha_ingreso
@@ -38,8 +36,7 @@ def ingresarNuevaReserva(reservas, habitaciones, clientes):
     estado = True
 
     # Buscar el precio de la habitación
-    habitacion = list(filter(lambda h: h[0] == id_habitacion, habitaciones))[0] # Devuelve la primera posicion de la lista
-    precio_habitacion = habitacion[4]
+    precio_habitacion = buscarPrecioHabitacion(id_habitacion, habitaciones)
 
     # Calcular precio total
     precio_total = calcularPrecio(precio_habitacion, fecha_ingreso, fecha_egreso)
@@ -51,6 +48,12 @@ def ingresarNuevaReserva(reservas, habitaciones, clientes):
     cliente = list(filter(lambda c: c[0] == id_cliente, clientes))[0] # Devuelve la primera posicion de la lista
     print(f"Reserva registrada para {cliente[1]} {cliente[2]} con un costo total de ${precio_total}")
 
+
+def buscarPrecioHabitacion(id_habitacion, habitaciones):
+    habitacion = list(filter(lambda h: h[0] == id_habitacion, habitaciones))[0] # Devuelve la primera posicion de la lista
+    precio_habitacion = habitacion[4]
+
+    return precio_habitacion
 
 def generarId(matriz):
     nuevoId = 1
