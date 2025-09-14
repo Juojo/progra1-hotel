@@ -1,3 +1,5 @@
+import re
+
 def imprimirTituloOpcion(titulo):
     print()
     print(f"--- {titulo.upper()} ---")
@@ -21,3 +23,11 @@ def generarId(matriz):
         nuevoId = ultimoId + 1
 
     return nuevoId
+
+def pedir_entero(mensaje):
+    while True:
+        valor = input(mensaje)
+        if valor.isdigit():
+            return int(valor)
+        else:
+            print("Error: Debe ingresar un numero entero valido.")

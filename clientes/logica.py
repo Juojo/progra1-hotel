@@ -1,7 +1,7 @@
 from util import *
 
 def agregarCliente(clientes):
-    dni = input("Ingrese el DNI del cliente:")
+    dni = str(pedir_entero("Ingrese el DNI del cliente:"))
     existe = False
     i = 0
     # Se busca si existe un cliente con ese DNI
@@ -23,7 +23,7 @@ def agregarCliente(clientes):
     esperarVolverMenu()
 
 def borrarCliente(clientes):
-    dni = input("Ingrese el DNI del cliente:")
+    dni = str(pedir_entero("Ingrese el DNI del cliente:"))
     existe = False
     i = 0
     indice = -1
@@ -41,7 +41,7 @@ def borrarCliente(clientes):
     esperarVolverMenu()
 
 def modificarCliente(clientes):
-    dni = input("Ingrese el DNI del cliente: ")
+    dni = str(pedir_entero("Ingrese el DNI del cliente: "))
 
       # Creamos una lista con todos los DNIs de los clientes
     dnis = [c[3] for c in clientes]
@@ -53,7 +53,7 @@ def modificarCliente(clientes):
 
         nuevo_nombre = input("Ingrese el nuevo nombre del cliente: ")
         nuevo_apellido = input("Ingrese el nuevo apellido del cliente: ")
-        nuevo_dni = input("Ingrese el nuevo DNI del cliente (0 si no quiere modificarlo): ")
+        nuevo_dni = str(pedir_entero("Ingrese el nuevo DNI del cliente (0 si no quiere modificarlo): "))
 
         # Se verifica que el nuevo DNI no este repetido si se quiere cambiar
         if nuevo_dni != "0":

@@ -24,9 +24,9 @@ def agregarReserva(reservas, habitaciones, clientes):
 
 def ingresarNuevaReserva(reservas, habitaciones, clientes):
     print("Ingrese el ID del cliente que realiza la reserva: ", end="")
-    id_cliente = int(input())
+    id_cliente = pedir_entero()
     print("Ingrese la habitacion de la reserva (ID): ", end="")
-    id_habitacion = int(input())
+    id_habitacion = pedir_entero()
     print("Ingrese la fecha de ingreso (dd/mm/yyyy): ", end="")
     fecha_ingreso = input()
     print("Ingrese la fecha de egreso (dd/mm/yyyy): ", end="")
@@ -56,7 +56,7 @@ def buscarPrecioHabitacion(id_habitacion, habitaciones):
     return precio_habitacion
 
 def modificarReserva(reservas):
-    Id_reserva = int(input("Ingrese el ID de la reserva: "))
+    Id_reserva = pedir_entero("Ingrese el ID de la reserva: ")
 
      # Se crea una lista con todos los IDs de reservas
     ids = [reserva[0] for reserva in reservas]
@@ -69,7 +69,7 @@ def modificarReserva(reservas):
         nuevo_cliente = input("Ingrese el nuevo cliente de la reserva: ")
         nueva_fecha_ingreso = input("Ingrese la nueva fecha de ingreso: ")
         nueva_fecha_egreso = input("Ingrese la nueva fecha de egreso: ")
-        nueva_habitacion = int(input("Ingrese la nueva habitacion del cliente (0 si no quiere modificarla): "))
+        nueva_habitacion = pedir_entero("Ingrese la nueva habitacion del cliente (0 si no quiere modificarla): ")
 
         # Se verifica que la nueva habitacion no esté ocupada o si no se quiere cambiar
         if nueva_habitacion != 0:

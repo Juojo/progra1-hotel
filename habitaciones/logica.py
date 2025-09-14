@@ -9,7 +9,7 @@ def mostrarHabitaciones(habitaciones):
     esperarVolverMenu()
 
 def modificarHabitacion(habitaciones):
-    id_habitacion = int(input("Ingrese el Nro. de habitación: "))
+    id_habitacion = pedir_entero("Ingrese el Nro. de habitación: ")
 
     # se crea una lista con todos los numeros de habitacion
     numeros = [hab[0] for hab in habitaciones]
@@ -19,9 +19,9 @@ def modificarHabitacion(habitaciones):
         habitacion = habitaciones[indice]
 
         nuevo_tipo = input("Ingrese el nuevo tipo (0 para no modificar): ")
-        nueva_capacidad = input("Ingrese la nueva capacidad (0 para no modificar): ")
+        nueva_capacidad = str(pedir_entero("Ingrese la nueva capacidad (0 para no modificar): "))
         nuevo_estado = input("Ingrese el nuevo estado (0 para no modificar): ")
-        nuevo_precio = input("Ingrese el nuevo precio (0 para no modificar): ")
+        nuevo_precio = pedir_entero("Ingrese el nuevo precio (0 para no modificar): ")
 
         # se actualiza solo si corresponde
         if nuevo_tipo != "0":
@@ -40,7 +40,7 @@ def modificarHabitacion(habitaciones):
     esperarVolverMenu()
 
 def bajaHabitacion(habitaciones, habitaciones_baja):
-    id = int(input("Ingrese el Nro. de habitación: "))
+    id = pedir_entero("Ingrese el Nro. de habitación: ")
     existe = False
     i = 0
     indice = -1
@@ -68,7 +68,7 @@ def bajaHabitacion(habitaciones, habitaciones_baja):
     esperarVolverMenu()
 
 def reintegrarHabitacion(habitaciones, habitaciones_baja):
-    id = int(input("Ingrese el Nro. de habitación a reintegrar: "))
+    id = pedir_entero("Ingrese el Nro. de habitación a reintegrar: ")
     existe = False
     i = 0
     indice = -1
@@ -100,9 +100,9 @@ def reintegrarHabitacion(habitaciones, habitaciones_baja):
 def agregarHabitacion(habitaciones):    
     nuevo_id = generarId(habitaciones)
     tipo = input("Ingrese el tipo de habitación: ")
-    capacidad = input("Ingrese la capacidad: ")
+    capacidad = str(pedir_entero("Ingrese la capacidad: "))
     estado = input("Ingrese el estado: ")
-    precio = int(input("Ingrese el precio: "))
+    precio = pedir_entero("Ingrese el precio: ")
     
     habitacion = [nuevo_id, tipo, capacidad, estado, precio]
     habitaciones.append(habitacion)
