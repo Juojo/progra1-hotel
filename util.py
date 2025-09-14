@@ -31,3 +31,13 @@ def pedir_entero(mensaje):
             return int(valor)
         else:
             print("Error: Debe ingresar un numero entero valido.")
+
+
+def pedir_fecha(mensaje):
+    patron = r"^\d{2}/\d{2}/\d{4}$"
+    while True:
+        valor = input(mensaje)
+        if re.match(patron, valor):
+            return valor
+        else:
+            print("Error: Debe ingresar la fecha en formato dd/mm/yyyy.")
