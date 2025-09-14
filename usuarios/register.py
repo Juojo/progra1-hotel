@@ -9,11 +9,11 @@ def ejecutarOpcionRegistrarse(usuarios):
             # Se pide el ingreso de una contrasena para el nuevo usuario
             contrasena_nueva = input("Ingrese su contraseña: ")
             
-            # Se actualiza las lista de usuarios y la de contrasenas
+            # Se actualiza la tupla de usuarios
             agregarUsuarioNuevo(usuario_nuevo, contrasena_nueva, usuarios)
             
             # Se le notifica al usuario que el registro fue exitoso
-            print("\nEl usuario se ha registrado exitosamente.\n")
+            print("El usuario se ha registrado exitosamente.")
         else:
             print("Ese nombre de usuario ya existe. Elija otro.")
 
@@ -40,4 +40,5 @@ def validarRegistro(usuario_nuevo, usuarios_nombre):
     return usuario_valido
 
 def agregarUsuarioNuevo(usuario_nuevo, contrasena_nueva, usuarios):
-    usuarios.append([usuario_nuevo, contrasena_nueva])
+    nueva_tupla = (usuario_nuevo, contrasena_nueva)
+    usuarios.append(nueva_tupla)

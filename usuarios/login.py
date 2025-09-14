@@ -7,29 +7,15 @@ def ejecutarOpcionIniciarSesion(usuarios):
     login_exitoso = validarLogin(usuario_ingresado, contrasena_ingresada, usuarios)
 
     if login_exitoso:
-        print("\n¡Inicio de sesión exitoso!")
+        print("¡Inicio de sesión exitoso!")
         print("Bienvenido,", usuario_ingresado)
-        
-        salir_menu_login = True
     else:
         print("El usuario no existe o su contrasena es incorrecta.")
         
     return login_exitoso
 
 def validarLogin(usuario_ingresado, contrasena_ingresada, usuarios):
-    login_exitoso = False # Por defecto se toma como que el login no es exitoso
-    
-    # Busca el usuario en la lista
-    i = 0
-    usuario_encontrado = False
-    contrasena_correcta = False
-    
-    while usuario_encontrado == False and i<len(usuarios):
-        if usuarios[i][0] == usuario_ingresado:
-            usuario_encontrado = True
-            if usuarios[i][1] == contrasena_ingresada:
-                #contrasena_correcta = True
-                login_exitoso = True # login_exitso pasa a ser True para el return de la funcion
-        i+=1
-            
-    return login_exitoso
+    for nombre, contrasena in usuarios:
+        if nombre == usuario_ingresado and contrasena == contrasena_ingresada:
+            return True  # Login exitoso
+    return False  # No se encontró o contraseña incorrecta
