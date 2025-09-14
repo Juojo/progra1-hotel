@@ -28,9 +28,9 @@ def ingresarNuevaReserva(reservas, habitaciones, clientes):
     print("Ingrese la habitacion de la reserva (ID): ", end="")
     id_habitacion = pedir_entero()
     print("Ingrese la fecha de ingreso (dd/mm/yyyy): ", end="")
-    fecha_ingreso = input()
+    fecha_ingreso = pedir_fecha()
     print("Ingrese la fecha de egreso (dd/mm/yyyy): ", end="")
-    fecha_egreso = input()
+    fecha_egreso = pedir_fecha()
 
     id_reserva = generarId(reservas)
     estado = True
@@ -67,8 +67,8 @@ def modificarReserva(reservas):
         indice = ids.index(Id_reserva)  # Obtenemos el indice de la reserva con .index
 
         nuevo_cliente = input("Ingrese el nuevo cliente de la reserva: ")
-        nueva_fecha_ingreso = input("Ingrese la nueva fecha de ingreso: ")
-        nueva_fecha_egreso = input("Ingrese la nueva fecha de egreso: ")
+        nueva_fecha_ingreso = pedir_fecha("Ingrese la nueva fecha de ingreso: ")
+        nueva_fecha_egreso = pedir_fecha("Ingrese la nueva fecha de egreso: ")
         nueva_habitacion = pedir_entero("Ingrese la nueva habitacion del cliente (0 si no quiere modificarla): ")
 
         # Se verifica que la nueva habitacion no esté ocupada o si no se quiere cambiar
@@ -106,7 +106,7 @@ def darBajaReserva(reservas):
     imprimirTituloOpcion("dar de baja una reserva")
     
     print("Ingrese la ID de la reserva que quiere dar de baja: ", end="")
-    id_reserva = input()
+    id_reserva = pedir_entero()
 
     encontrado = False
     i = 0

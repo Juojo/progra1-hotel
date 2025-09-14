@@ -41,3 +41,13 @@ def pedir_fecha(mensaje):
             return valor
         else:
             print("Error: Debe ingresar la fecha en formato dd/mm/yyyy.")
+
+def pedir_string(mensaje):
+    while True:
+        valor = input(mensaje).strip()
+        if valor == "":
+            print("Error: El campo no puede estar vacío.")
+        elif not valor.replace(" ", "").isalpha():
+            print("Error: Solo se permiten letras y espacios.")
+        else:
+            return valor
