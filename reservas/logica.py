@@ -55,15 +55,6 @@ def buscarPrecioHabitacion(id_habitacion, habitaciones):
 
     return precio_habitacion
 
-def generarId(matriz):
-    nuevoId = 1
-
-    if len(matriz) != 0:
-        ultimoId = matriz[len(matriz)-1][0]
-        nuevoId = ultimoId + 1
-
-    return nuevoId
-
 def modificarReserva(reservas):
     Id_reserva = int(input("Ingrese el ID de la reserva: "))
 

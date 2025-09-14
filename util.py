@@ -12,3 +12,12 @@ def esperarVolverMenu():
     # Volver al menu principal
     print("\nPresione ENTER para volver al menú anterior", end="")
     input()
+
+def generarId(matriz):
+    nuevoId = 1
+
+    if len(matriz) != 0:
+        ultimoId = matriz[len(matriz)-1][0]
+        nuevoId = ultimoId + 1
+
+    return nuevoId

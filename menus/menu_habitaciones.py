@@ -6,9 +6,11 @@ def mostrarMenuHabitaciones():
            Menú Habitaciones
 ----------------------------------------
 1. Mostrar habitaciones
-2. Modificar estado de habitacion
+2. Modificar habitacion
 3. Dar de baja habitacion
 4. Mostrar habitaciones no disponibles
+5. Reintegrar habitacion
+6. Agregar habitacion
 ----------------------------------------
 0. Volver
 ----------------------------------------
@@ -25,11 +27,15 @@ def mostrarIngresarMenuHabitaciones(habitaciones):
         if opcion_seleccionada == "1":
             mostrarHabitaciones(habitaciones)
         elif opcion_seleccionada == "2":
-            modificarEstadoHabitacion(habitaciones)
+            modificarHabitacion(habitaciones)
         elif opcion_seleccionada == "3":
             bajaHabitacion(habitaciones, habitaciones_baja)
         elif opcion_seleccionada == '4':
             mostrarHabitacionesBaja(habitaciones_baja)
+        elif opcion_seleccionada == '5':
+            reintegrarHabitacion(habitaciones, habitaciones_baja)
+        elif opcion_seleccionada == '6':
+            agregarHabitacion(habitaciones)
         else:
             if opcion_seleccionada != "0":
                 print()
