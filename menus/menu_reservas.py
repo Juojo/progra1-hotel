@@ -14,9 +14,9 @@ def mostrarMenuReservas():
 ----------------------------------------
 """)
         
-def mostrarIngresarMenuReservas(reservas, habitaciones, clientes):
+def mostrarIngresarMenuReservas(reservas, habitaciones, clientes):    
     mostrarMenuReservas()
-    
+
     opcion_seleccionada = "" # Se inicializa la variable
 
     while opcion_seleccionada != "0":

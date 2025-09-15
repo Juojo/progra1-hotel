@@ -2,6 +2,7 @@ from usuarios import ejecutarOpcionIniciarSesion, ejecutarOpcionRegistrarse, usu
 from .menu_clientes import *
 from .menu_reservas import *
 from .menu_habitaciones import *
+from .menu_estadisticas import *
 
 # Menus login
 
@@ -52,6 +53,7 @@ def mostrarMenuPrincipal():
 1. Clientes
 2. Reservas
 3. Habitaciones
+4, Estadisticas
 ----------------------------------------
 0. Salir
 ----------------------------------------
@@ -72,6 +74,8 @@ def mostrarIngresarMenuPrincipal(clientes, reservas, habitaciones):
             mostrarIngresarMenuReservas(reservas, habitaciones, clientes)
         elif opcion_seleccionada == "3":
             mostrarIngresarMenuHabitaciones(habitaciones)
+        elif opcion_seleccionada == '4':
+            mostrarIngresarMenuEstadisticas(reservas)
         else:
             if opcion_seleccionada != "0":
                 print()

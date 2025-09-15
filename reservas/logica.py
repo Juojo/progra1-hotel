@@ -24,13 +24,13 @@ def agregarReserva(reservas, habitaciones, clientes):
 
 def ingresarNuevaReserva(reservas, habitaciones, clientes):
     print("Ingrese el ID del cliente que realiza la reserva: ", end="")
-    id_cliente = pedir_entero()
+    id_cliente = pedir_entero("")
     print("Ingrese la habitacion de la reserva (ID): ", end="")
-    id_habitacion = pedir_entero()
+    id_habitacion = pedir_entero("")
     print("Ingrese la fecha de ingreso (dd/mm/yyyy): ", end="")
-    fecha_ingreso = pedir_fecha()
+    fecha_ingreso = pedir_fecha("")
     print("Ingrese la fecha de egreso (dd/mm/yyyy): ", end="")
-    fecha_egreso = pedir_fecha()
+    fecha_egreso = pedir_fecha("")
 
     id_reserva = generarId(reservas)
     estado = True
@@ -119,3 +119,28 @@ def darBajaReserva(reservas):
     print("La reserva se dio de baja correctamente!")
 
     esperarVolverMenu()
+
+def maxPrecioReservas(reservas):
+    precios = [reserva[6] for reserva in reservas] 
+    precio_max = max(precios)
+    cantidad = sum(1 for reserva in reservas if reserva[6] == precio_max)
+    
+    print(f"Precio máximo: {precio_max}")
+    print(f"Cantidad de reservas con ese precio: {cantidad}")
+    print()
+
+def minYMaxPrecioReservas(reservas):
+    precios = [reserva[6] for reserva in reservas]
+    precio_min = min(precios)
+    precio_max = max(precios)
+    
+    print(f"Precio mínimo de reserva: {precio_min}")
+    print(f"Precio máximo de reserva: {precio_max}")
+    print()
+
+def promedioPrecioReservas(reservas):
+    precios = [reserva[6] for reserva in reservas]
+    promedio = sum(precios) / len(precios)
+    
+    print(f"Promedio de precios de las reservas: {promedio:.2f}")
+    print()
