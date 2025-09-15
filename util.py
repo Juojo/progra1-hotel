@@ -33,14 +33,62 @@ def pedir_entero(mensaje):
             print("Error: Debe ingresar un numero entero valido.")
 
 
-def pedir_fecha(mensaje):
-    patron = r"^\d{2}/\d{2}/\d{4}$"
-    while True:
-        valor = input(mensaje)
-        if re.match(patron, valor):
-            return valor
-        else:
-            print("Error: Debe ingresar la fecha en formato dd/mm/yyyy.")
+def pedir_fecha(fecha):
+    fecha_valida = False
+
+    while fecha_valida == False:
+        dia = int(input("Introduzca el día: "))
+        mes = int(input("Introduzca el mes: "))
+        año = int(input("Introduzca el año: "))
+
+        fecha_valida = True  # Se asume que es válida salvo que encuentre error
+
+        if mes < 1 or mes > 12:
+            print("Error: El mes debe ser un número entre 1 y 12")
+            fecha_valida = False
+        elif año < 1:
+            print("Error: El año no es válido, no se aceptan años menores a 0")
+            fecha_valida = False
+        # Meses con 31 días
+        elif (mes == 1 or mes == 3 or mes == 5 or mes == 7 or mes == 8 or mes == 10 or mes == 12):
+            if dia < 1 or dia > 31:
+                print("Error: Para el mes escogido hay un máximo de 31 días")
+                fecha_valida = False
+        # Meses con 30 días
+        elif (mes == 4 or mes == 6 or mes == 9 or mes == 11):
+            if dia < 1 or dia > 30:
+                print("Error: Para el mes escogido hay un máximo de 30 días")
+                fecha_valida = False
+        # Febrero
+        elif mes == 2:
+            if (año % 4 == 0 and año % 100 != 0) or (año % 400 == 0):  # Bisiesto
+                if dia < 1 or dia > 29:
+                    print("Error: Año bisiesto, febrero tiene hasta 29 días")
+                    fecha_valida = False
+            else:
+                if dia < 1 or dia > 28:
+                    print("Error: Febrero tiene hasta 28 días este año")
+                    fecha_valida = False
+    
+    # Se pasa a string para concatenar la fecha
+    # Dia y mes se le agrega un 0 si es menor a 10
+
+    if dia < 10:
+        dia = "0"+str(dia)
+    else:
+        dia = str(dia)
+
+    if mes < 10:
+        mes = "0"+str(mes)
+    else:
+        mes = str(mes)
+
+    año=str(año)
+    
+    # Se crea el string de fecha siguiendo el formato utilizado en la lista almacenada (vuelos_fecha)
+    fecha = dia+"-"+mes+"-"+año
+
+    return fecha
 
 def pedir_string(mensaje):
     while True:

@@ -27,9 +27,9 @@ def ingresarNuevaReserva(reservas, habitaciones, clientes):
     id_cliente = pedir_entero("")
     print("Ingrese la habitacion de la reserva (ID): ", end="")
     id_habitacion = pedir_entero("")
-    print("Ingrese la fecha de ingreso (dd/mm/yyyy): ", end="")
+    print("--- Ingrese la fecha de ingreso ---")
     fecha_ingreso = pedir_fecha("")
-    print("Ingrese la fecha de egreso (dd/mm/yyyy): ", end="")
+    print("--- Ingrese la fecha de egreso ---")
     fecha_egreso = pedir_fecha("")
 
     id_reserva = generarId(reservas)
