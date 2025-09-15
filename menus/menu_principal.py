@@ -53,7 +53,7 @@ def mostrarMenuPrincipal():
 1. Clientes
 2. Reservas
 3. Habitaciones
-4, Estadisticas
+4. Estadisticas
 ----------------------------------------
 0. Salir
 ----------------------------------------
