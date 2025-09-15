@@ -46,8 +46,8 @@ def pedir_fecha(fecha):
         if mes < 1 or mes > 12:
             print("Error: El mes debe ser un número entre 1 y 12")
             fecha_valida = False
-        elif año < 1:
-            print("Error: El año no es válido, no se aceptan años menores a 0")
+        elif año < 2025:
+            print("Error: El año no puede ser menor al actual")
             fecha_valida = False
         # Meses con 31 días
         elif (mes == 1 or mes == 3 or mes == 5 or mes == 7 or mes == 8 or mes == 10 or mes == 12):
