@@ -3,11 +3,10 @@ from clientes.datos import clientes
 from reservas.datos import reservas, generarPrecioTotalReservasDefault
 from habitaciones.datos import habitaciones
 
-# Programa Principal
+if __name__ == "__main__":
+    generarPrecioTotalReservasDefault(habitaciones)
+    login_exitoso = mostrarIngresarMenuLogin()
 
-generarPrecioTotalReservasDefault(habitaciones)
-login_exitoso = mostrarIngresarMenuLogin()
-
-if login_exitoso:
-    mostrarIngresarMenuPrincipal(clientes, reservas, habitaciones)
-print("Fin programa")
+    if login_exitoso:
+        mostrarIngresarMenuPrincipal(clientes, reservas, habitaciones)
+    print("Fin programa")
