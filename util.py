@@ -33,7 +33,7 @@ def pedir_entero(mensaje):
             print("Error: Debe ingresar un numero entero valido.")
 
 
-def pedir_fecha(fecha):
+def pedir_fecha():
     fecha_valida = False
 
     while fecha_valida == False:
@@ -46,8 +46,8 @@ def pedir_fecha(fecha):
         if mes < 1 or mes > 12:
             print("Error: El mes debe ser un número entre 1 y 12")
             fecha_valida = False
-        elif año < 2025:
-            print("Error: El año no puede ser menor al actual")
+        elif año < 1000 or año > 9999:
+            print("Error: El año debe tener 4 digitos")
             fecha_valida = False
         # Meses con 31 días
         elif (mes == 1 or mes == 3 or mes == 5 or mes == 7 or mes == 8 or mes == 10 or mes == 12):
@@ -86,7 +86,7 @@ def pedir_fecha(fecha):
     año=str(año)
     
     # Se crea el string de fecha siguiendo el formato utilizado en la lista almacenada (vuelos_fecha)
-    fecha = dia+"-"+mes+"-"+año
+    fecha = dia+"/"+mes+"/"+año
 
     return fecha
 
