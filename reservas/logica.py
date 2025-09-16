@@ -67,8 +67,10 @@ def modificarReserva(reservas):
         indice = ids.index(Id_reserva)  # Obtenemos el indice de la reserva con .index
 
         nuevo_cliente = input("Ingrese el nuevo cliente de la reserva: ")
-        nueva_fecha_ingreso = pedir_fecha("Ingrese la nueva fecha de ingreso: ")
-        nueva_fecha_egreso = pedir_fecha("Ingrese la nueva fecha de egreso: ")
+        print("Ingrese la nueva fecha de ingreso: ", end="")
+        nueva_fecha_ingreso = pedir_fecha()
+        print("Ingrese la nueva fecha de egreso: ", end="")
+        nueva_fecha_egreso = pedir_fecha()
         nueva_habitacion = pedir_entero("Ingrese la nueva habitacion del cliente (0 si no quiere modificarla): ")
 
         # Se verifica que la nueva habitacion no esté ocupada o si no se quiere cambiar
@@ -144,8 +146,8 @@ def minYMaxPrecioReservas(reservas):
         "precio_max": max(precios)
     }
     
-    print(f"Precio mínimo de reserva: {resultado_precios["precio_min"]}")
-    print(f"Precio máximo de reserva: {resultado_precios["precio_max"]}")
+    print(f"Precio mínimo de reserva: {resultado_precios['precio_min']}")
+    print(f"Precio máximo de reserva: {resultado_precios['precio_max']}")
     esperarVolverMenu()
 
 def promedioPrecioReservas(reservas):
