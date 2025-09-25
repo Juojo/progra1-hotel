@@ -58,7 +58,7 @@ def buscarPrecioHabitacion(id_habitacion, habitaciones):
 def modificarReserva(reservas):
     Id_reserva = pedir_entero("Ingrese el ID de la reserva: ")
 
-     # Se crea una lista con todos los IDs de reservas
+    # Se crea una lista con todos los IDs de reservas
     ids = [reserva[0] for reserva in reservas]
 
     # Se busca si hay una reserva con ese ID
@@ -108,7 +108,7 @@ def darBajaReserva(reservas):
     imprimirTituloOpcion("dar de baja una reserva")
     
     print("Ingrese la ID de la reserva que quiere dar de baja: ", end="")
-    id_reserva = pedir_entero()
+    id_reserva = pedir_entero("")
 
     reserva_encontrada = None
     for reserva in reservas:
