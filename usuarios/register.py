@@ -18,26 +18,15 @@ def ejecutarOpcionRegistrarse(usuarios):
             print("Ese nombre de usuario ya existe. Elija otro.")
 
 
-def validarRegistro(usuario_nuevo, usuarios_nombre):
-    usuario_valido = False # Por defecto se toma como que el usuario no es valido
-    
-    # Se busca que el usuario ingresado no exista en la lista de usuarios_nombre
-    i = 0
-    usuario_ya_existe = False
-    usuario_encontrado = False
-    while not usuario_encontrado and i<len(usuarios_nombre):
-        if usuarios_nombre[i] == usuario_nuevo:
-            usuario_ya_existe = True
-        i+=1
-
-    if usuario_ya_existe == False:
-        usuario_valido = True # Se cambia el usuario_valido a True para el return de la funcion
-        
-    # El usuario no puede estar vacio
+def validarRegistro(usuario_nuevo, usuarios):
     if usuario_nuevo == "":
-        usuario_valido = False
-        
-    return usuario_valido
+        return False  # Usuario no puede estar vacío
+
+    for usuario in usuarios:
+        if usuario[0] == usuario_nuevo:
+            return False  # Usuario ya existe
+
+    return True  # Usuario válido y no existe
 
 def agregarUsuarioNuevo(usuario_nuevo, contrasena_nueva, usuarios):
     nueva_tupla = (usuario_nuevo, contrasena_nueva)

@@ -41,26 +41,22 @@ def modificarHabitacion(habitaciones):
 
 def bajaHabitacion(habitaciones, habitaciones_baja):
     id = pedir_entero("Ingrese el Nro. de habitación: ")
-    existe = False
-    i = 0
-    indice = -1
-    # Se busca si existe una habitacion con ese nro
-    while i < len(habitaciones) and not existe:
-        if id == habitaciones[i][0]:
-            existe = True
-            indice = i  # Se guarda la posicion de la habitacion
-        i = i + 1
+    habitacion_encontrada = None  # Inicialmente no encontrada
 
-    if existe:
+    for hab in habitaciones:
+        if hab[0] == id:
+            habitacion_encontrada = hab  # Se guarda la habitación encontrada
+
+    if habitacion_encontrada is not None:
         razon = input("Ingrese la razón de la baja: ")
         # se copia la habitación con slicing
-        habitacion = habitaciones[indice][:]
+        habitacion = habitacion_encontrada[:]
         # se agrega la razón
         habitacion.append(razon)
         # se mueve a la matriz de bajas
         habitaciones_baja.append(habitacion)
         # se elimina de la lista principal
-        habitaciones.pop(indice)
+        habitaciones.remove(habitacion_encontrada)
         print("La habitación ha sido dada de baja por la siguiente razón:", razon)
     else:
         print("Error. No existe habitación con ese número.")
@@ -69,27 +65,24 @@ def bajaHabitacion(habitaciones, habitaciones_baja):
 
 def reintegrarHabitacion(habitaciones, habitaciones_baja):
     id = pedir_entero("Ingrese el Nro. de habitación a reintegrar: ")
-    existe = False
-    i = 0
-    indice = -1
+    habitacion_baja = None  # Inicialmente no encontrada
 
-    while i < len(habitaciones_baja) and not existe:
-        if id == habitaciones_baja[i][0]:
-            existe = True
-            indice = i
-        i += 1
+    for hab in habitaciones_baja:
+        if hab[0] == id:
+            habitacion_baja = hab  # Se guarda si se encuentra
 
-    if existe:
+    if habitacion_baja is not None:
         # Se crea una copia de la habitación sin la razón de la baja
-        habitacion = habitaciones_baja[indice][:-1]  
+        habitacion = habitacion_baja[:-1]  
 
         # Se busca la posición que le corresponde en la lista principal según el Nro_habitacion
         pos = 0
-        while pos < len(habitaciones) and habitaciones[pos][0] < id:
-            pos += 1
+        for hab in habitaciones:
+            if hab[0] < id:
+                pos += 1
         
         habitaciones.insert(pos, habitacion)
-        habitaciones_baja.pop(indice)
+        habitaciones_baja.remove(habitacion_baja)
 
         print(f"La habitación Nro. {id} ha sido reintegrada correctamente.")
     else:

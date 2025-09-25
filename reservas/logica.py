@@ -110,15 +110,16 @@ def darBajaReserva(reservas):
     print("Ingrese la ID de la reserva que quiere dar de baja: ", end="")
     id_reserva = pedir_entero()
 
-    encontrado = False
-    i = 0
-    while i<len(reservas) and encontrado == False:
-        if reservas[i][0] == id_reserva:
-            encontrado = True
-            reservas[i][5] = False
-        i+=1
-
-    print("La reserva se dio de baja correctamente!")
+    reserva_encontrada = None
+    for reserva in reservas:
+        if reserva[0] == id_reserva:
+            reserva_encontrada = reserva
+    
+    if reserva_encontrada is not None:
+        reserva_encontrada[5] = False
+        print("La reserva se dio de baja correctamente!")
+    else:
+        print("No se encontró una reserva con ese ID.")
 
     esperarVolverMenu()
 
