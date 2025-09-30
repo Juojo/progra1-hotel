@@ -29,16 +29,29 @@ def mostrarIngresarMenuLogin():
     
     while salir_menu_login == False and login_exitoso == False:
         mostrarMenuLogin()
-        opcion = input("Elija una opción: ")
 
-        if opcion == "1": # (Iniciar sesion)
-            login_exitoso = ejecutarOpcionIniciarSesion(usuarios)
-        elif opcion == "2": # (Registrarse)
-            ejecutarOpcionRegistrarse(usuarios)
-        elif opcion == "0": # (Salir)
-            salir_menu_login = True # Sale del ciclo del menu por opcion seleccionada
-        else:
-            print("\nOpción no válida. Por favor intente nuevamente.\n")
+        while True:
+            try:
+                opcion = int(input("Elija una opción: "))
+                break
+            except ValueError:
+                print("Error: Solo se permite el ingreso de numeros enteros")
+                mostrarMenuLogin()
+            except Exception as e:
+                print("Error no contemplado:", type(e).__name__)
+                mostrarMenuLogin()
+
+        try:
+            if opcion == 1: # (Iniciar sesion)
+                login_exitoso = ejecutarOpcionIniciarSesion(usuarios)
+            elif opcion == 2: # (Registrarse)
+                ejecutarOpcionRegistrarse(usuarios)
+            elif opcion == 0: # (Salir)
+                salir_menu_login = True # Sale del ciclo del menu por opcion seleccionada
+            else:
+                raise Exception("Opción no válida. Por favor intente nuevamente.")
+        except Exception as e:
+            print("Ocurrio un error:", e)
     
     print()
     return login_exitoso
