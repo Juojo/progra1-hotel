@@ -43,32 +43,26 @@ def pedir_fecha():
 
         fecha_valida = True  # Se asume que es válida salvo que encuentre error
 
-        if mes < 1 or mes > 12:
-            print("Error: El mes debe ser un número entre 1 y 12")
-            fecha_valida = False
-        elif año < 1000 or año > 9999:
-            print("Error: El año debe tener 4 digitos")
-            fecha_valida = False
+        assert (mes > 1 and mes < 12), "El mes debe ser un número entre 1 y 12"
+            
+        
+        assert (año > 1000 and año < 9999), "El año debe tener 4 digitos"
+        
+            
         # Meses con 31 días
-        elif (mes == 1 or mes == 3 or mes == 5 or mes == 7 or mes == 8 or mes == 10 or mes == 12):
-            if dia < 1 or dia > 31:
-                print("Error: Para el mes escogido hay un máximo de 31 días")
-                fecha_valida = False
+        assert ((mes == 1 or mes == 3 or mes == 5 or mes == 7 or mes == 8 or mes == 10 or mes == 12) and (dia < 1 or dia > 31)), "Para el mes escogido hay un máximo de 31 días"
+    
+    
+                
         # Meses con 30 días
-        elif (mes == 4 or mes == 6 or mes == 9 or mes == 11):
-            if dia < 1 or dia > 30:
-                print("Error: Para el mes escogido hay un máximo de 30 días")
-                fecha_valida = False
+        assert ((mes == 4 or mes == 6 or mes == 9 or mes == 11) and  (dia < 1 or dia > 30)), "Error: Para el mes escogido hay un máximo de 30 días"
+                
         # Febrero
-        elif mes == 2:
+        if mes == 2:
             if (año % 4 == 0 and año % 100 != 0) or (año % 400 == 0):  # Bisiesto
-                if dia < 1 or dia > 29:
-                    print("Error: Año bisiesto, febrero tiene hasta 29 días")
-                    fecha_valida = False
+                assert (dia < 1 or dia > 29), "Año bisiesto, febrero tiene hasta 29 días"
             else:
-                if dia < 1 or dia > 28:
-                    print("Error: Febrero tiene hasta 28 días este año")
-                    fecha_valida = False
+                assert (dia < 1 or dia > 29), "Febrero tiene hasta 28 días este año"
     
     # Se pasa a string para concatenar la fecha
     # Dia y mes se le agrega un 0 si es menor a 10
