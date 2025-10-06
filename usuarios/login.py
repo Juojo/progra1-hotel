@@ -15,7 +15,7 @@ def ejecutarOpcionIniciarSesion(usuarios):
     return login_exitoso
 
 def validarLogin(usuario_ingresado, contrasena_ingresada, usuarios):
-    for nombre, contrasena in usuarios:
+    for nombre, contrasena, mail in usuarios:
         if nombre == usuario_ingresado and contrasena == contrasena_ingresada:
             return True  # Login exitoso
     return False  # No se encontró o contraseña incorrecta

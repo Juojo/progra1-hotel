@@ -1,3 +1,5 @@
+import re
+
 def ejecutarOpcionRegistrarse(usuarios):
     usuario_valido = False
     while not usuario_valido:
@@ -9,8 +11,15 @@ def ejecutarOpcionRegistrarse(usuarios):
             # Se pide el ingreso de una contrasena para el nuevo usuario
             contrasena_nueva = input("Ingrese su contraseña: ")
             
+            while True:
+                mail_nuevo = input("Ingrese su correo electrónico (gmail): ")
+                if validarMail(mail_nuevo):
+                    break
+                else:
+                    print("Correo inválido. Debe ser un gmail. Intente nuevamente.")
+
             # Se actualiza la tupla de usuarios
-            agregarUsuarioNuevo(usuario_nuevo, contrasena_nueva, usuarios)
+            agregarUsuarioNuevo(usuario_nuevo, contrasena_nueva, mail_nuevo, usuarios)
             
             # Se le notifica al usuario que el registro fue exitoso
             print("El usuario se ha registrado exitosamente.")
@@ -28,6 +37,14 @@ def validarRegistro(usuario_nuevo, usuarios):
 
     return True  # Usuario válido y no existe
 
-def agregarUsuarioNuevo(usuario_nuevo, contrasena_nueva, usuarios):
-    nueva_tupla = (usuario_nuevo, contrasena_nueva)
+def validarMail(mail):
+    patron = r'.+@gmail\.com$'
+    if re.match(patron, mail):
+        return True
+    else:
+        return False
+
+
+def agregarUsuarioNuevo(usuario_nuevo, contrasena_nueva, mail_nuevo, usuarios):
+    nueva_tupla = (usuario_nuevo, contrasena_nueva, mail_nuevo)
     usuarios.append(nueva_tupla)
