@@ -19,27 +19,37 @@ def mostrarMenuHabitaciones():
 def mostrarIngresarMenuHabitaciones(habitaciones):
     mostrarMenuHabitaciones()
     
-    opcion_seleccionada = "" # Se inicializa la variable
+    opcion_seleccionada = -1 # Se inicializa la variable
 
-    while opcion_seleccionada != "0":
-        opcion_seleccionada = input("Seleccione una opción: ")
-        
-        if opcion_seleccionada == "1":
+    while opcion_seleccionada != 0:
+        while True:
+            try:
+                opcion_seleccionada = int(input("Elija una opción: "))
+                break
+            except ValueError:
+                print("Error: Solo se permite el ingreso de numeros enteros")
+                mostrarMenuHabitaciones()
+            except Exception as e:
+                print("Error no contemplado:", type(e).__name__)
+                mostrarMenuHabitaciones()
+
+        if opcion_seleccionada == 1:
             mostrarHabitaciones(habitaciones)
-        elif opcion_seleccionada == "2":
+        elif opcion_seleccionada == 2:
             modificarHabitacion(habitaciones)
-        elif opcion_seleccionada == "3":
+        elif opcion_seleccionada == 3:
             bajaHabitacion(habitaciones, habitaciones_baja)
-        elif opcion_seleccionada == '4':
+        elif opcion_seleccionada == 4:
             mostrarHabitacionesBaja(habitaciones_baja)
-        elif opcion_seleccionada == '5':
+        elif opcion_seleccionada == 5:
             reintegrarHabitacion(habitaciones, habitaciones_baja)
-        elif opcion_seleccionada == '6':
+        elif opcion_seleccionada == 6:
             agregarHabitacion(habitaciones)
         else:
-            if opcion_seleccionada != "0":
+            if opcion_seleccionada != 0:
                 print()
                 print("Opción no válida.")
                 print()
 
-        mostrarMenuHabitaciones() # Muestra el print del menu luego de salir de la opcion seleccionada
+        if opcion_seleccionada != 0:
+            mostrarMenuHabitaciones() # Muestra el print del menu luego de salir de la opcion seleccionada

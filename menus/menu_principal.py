@@ -76,23 +76,33 @@ def mostrarMenuPrincipal():
 def mostrarIngresarMenuPrincipal(clientes, reservas, habitaciones):
     mostrarMenuPrincipal()
     
-    opcion_seleccionada = "" # Se inicializa la variable
+    opcion_seleccionada = -1
+    
+    while opcion_seleccionada != 0:
+        while True:
+            try:    
+                opcion_seleccionada = int(input("Elija una opción: "))
+                break
+            except ValueError:
+                print("Error: Solo se permite el ingreso de numeros enteros")
+                mostrarMenuPrincipal()
+            except Exception as e:
+                print("Error no contemplado:", type(e).__name__)
+                mostrarMenuPrincipal()
 
-    while opcion_seleccionada != "0":
-        opcion_seleccionada = input("Seleccione una opción: ")
-        
-        if opcion_seleccionada == "1":
+        if opcion_seleccionada == 1:
             mostrarIngresarMenuClientes(clientes)
-        elif opcion_seleccionada == "2":
+        elif opcion_seleccionada == 2:
             mostrarIngresarMenuReservas(reservas, habitaciones, clientes)
-        elif opcion_seleccionada == "3":
+        elif opcion_seleccionada == 3:
             mostrarIngresarMenuHabitaciones(habitaciones)
-        elif opcion_seleccionada == '4':
+        elif opcion_seleccionada == 4:
             mostrarIngresarMenuEstadisticas(reservas)
         else:
-            if opcion_seleccionada != "0":
+            if opcion_seleccionada != 0:
                 print()
                 print("Opción no válida.")
                 print()
 
-        mostrarMenuPrincipal() # Muestra el print del menu principal luego de salir de la opcion seleccionada
+        if opcion_seleccionada != 0:
+            mostrarMenuPrincipal()

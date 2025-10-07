@@ -16,21 +16,31 @@ def mostrarMenuEstadisticas():
 def mostrarIngresarMenuEstadisticas(reservas):    
     mostrarMenuEstadisticas()
 
-    opcion_seleccionada = "" # Se inicializa la variable
+    opcion_seleccionada = -1
 
-    while opcion_seleccionada != "0":
-        opcion_seleccionada = input("Seleccione una opción: ")   
+    while opcion_seleccionada != 0:
+        while True:
+            try:
+                opcion_seleccionada = int(input("Elija una opción: "))
+                break
+            except ValueError:
+                print("Error: Solo se permite el ingreso de numeros enteros")
+                mostrarMenuEstadisticas()
+            except Exception as e:
+                print("Error no contemplado:", type(e).__name__)
+                mostrarMenuEstadisticas()   
         
-        if opcion_seleccionada == "1":
+        if opcion_seleccionada == 1:
             promedioPrecioReservas(reservas)
-        elif opcion_seleccionada == "2":
+        elif opcion_seleccionada == 2:
             maxPrecioReservas(reservas)
-        elif opcion_seleccionada == "3":
+        elif opcion_seleccionada == 3:
             minYMaxPrecioReservas(reservas)
         else:
-            if opcion_seleccionada != "0":
+            if opcion_seleccionada != 0:
                 print()
                 print("Opción no válida.")
                 print()
 
-        mostrarMenuEstadisticas()
+        if opcion_seleccionada != 0:
+            mostrarMenuEstadisticas()

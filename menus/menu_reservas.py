@@ -17,23 +17,33 @@ def mostrarMenuReservas():
 def mostrarIngresarMenuReservas(reservas, habitaciones, clientes):    
     mostrarMenuReservas()
 
-    opcion_seleccionada = "" # Se inicializa la variable
+    opcion_seleccionada = -1 # Se inicializa la variable
 
-    while opcion_seleccionada != "0":
-        opcion_seleccionada = input("Seleccione una opción: ")
+    while opcion_seleccionada != 0:
+        while True:
+            try:
+                opcion_seleccionada = int(input("Elija una opción: "))
+                break
+            except ValueError:
+                print("Error: Solo se permite el ingreso de numeros enteros")
+                mostrarMenuReservas()
+            except Exception as e:
+                print("Error no contemplado:", type(e).__name__)
+                mostrarMenuReservas()
         
-        if opcion_seleccionada == "1":
+        if opcion_seleccionada == 1:
             agregarReserva(reservas, habitaciones, clientes)
-        elif opcion_seleccionada == "2":
+        elif opcion_seleccionada == 2:
             modificarReserva(reservas)
-        elif opcion_seleccionada == "3":
+        elif opcion_seleccionada == 3:
             darBajaReserva(reservas)
-        elif opcion_seleccionada == "4":
+        elif opcion_seleccionada == 4:
             mostrarReservas(reservas)
         else:
-            if opcion_seleccionada != "0":
+            if opcion_seleccionada != 0:
                 print()
                 print("Opción no válida.")
                 print()
 
-        mostrarMenuReservas() # Muestra el print del menu luego de salir de la opcion seleccionada
+        if opcion_seleccionada != 0:
+            mostrarMenuReservas() # Muestra el print del menu luego de salir de la opcion seleccionada
