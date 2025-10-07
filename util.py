@@ -34,36 +34,34 @@ def pedir_entero(mensaje):
 
 
 def pedir_fecha():
-    fecha_valida = False
+    while True:
+        try:
+            dia = int(input("Introduzca el día: "))
+            mes = int(input("Introduzca el mes: "))
+            año = int(input("Introduzca el año: "))
 
-    while fecha_valida == False:
-        dia = int(input("Introduzca el día: "))
-        mes = int(input("Introduzca el mes: "))
-        año = int(input("Introduzca el año: "))
+            assert 1 <= mes <= 12, "El mes debe ser un número entre 1 y 12"
+            assert 1000 <= año <= 9999, "El año debe tener 4 digitos"
+            # Meses con 31 días
+            if mes in [1, 3, 5, 7, 8, 10, 12]:
+                assert 1 <= dia <= 31, "Para el mes escogido hay un máximo de 31 días"
+            # Meses con 30 días
+            elif mes in [4, 6, 9, 11]:
+                assert 1 <= dia <= 30, "Para el mes escogido hay un máximo de 30 días"
+            # Febrero
+            elif mes == 2:
+                if (año % 4 == 0 and año % 100 != 0) or (año % 400 == 0):  # Bisiesto
+                    assert 1 <= dia <= 29, "Año bisiesto, febrero tiene hasta 29 días"
+                else:
+                    assert 1 <= dia <= 28, "Febrero tiene hasta 28 días este año"
+            break
+        except ValueError:
+            print("Error: Solo se permite el ingreso de numeros enteros")
+        except AssertionError as e:
+            print("Error:", e)
+        except Exception as e:
+            print("Error no contemplado:", type(e).__name__)
 
-        fecha_valida = True  # Se asume que es válida salvo que encuentre error
-
-        assert (mes > 1 and mes < 12), "El mes debe ser un número entre 1 y 12"
-            
-        
-        assert (año > 1000 and año < 9999), "El año debe tener 4 digitos"
-        
-            
-        # Meses con 31 días
-        assert ((mes == 1 or mes == 3 or mes == 5 or mes == 7 or mes == 8 or mes == 10 or mes == 12) and (dia < 1 or dia > 31)), "Para el mes escogido hay un máximo de 31 días"
-    
-    
-                
-        # Meses con 30 días
-        assert ((mes == 4 or mes == 6 or mes == 9 or mes == 11) and  (dia < 1 or dia > 30)), "Error: Para el mes escogido hay un máximo de 30 días"
-                
-        # Febrero
-        if mes == 2:
-            if (año % 4 == 0 and año % 100 != 0) or (año % 400 == 0):  # Bisiesto
-                assert (dia < 1 or dia > 29), "Año bisiesto, febrero tiene hasta 29 días"
-            else:
-                assert (dia < 1 or dia > 29), "Febrero tiene hasta 28 días este año"
-    
     # Se pasa a string para concatenar la fecha
     # Dia y mes se le agrega un 0 si es menor a 10
 
