@@ -25,3 +25,9 @@ pación por habitación, promedio de duración de reservas, y cantidad total de 
 lizadas en un período. El sistema deberá validar correctamente los datos ingresados (como 
 solapamiento  de  fechas  o  habitaciones  ya  ocupadas),  guardar  y  recuperar  información mediante archivos, utilizar Git para el control de versiones y contener pruebas unitarias que 
 aseguren la integridad de su funcionamiento.
+
+Observaciones:
+Funciones Lambda: emplear uso de map y reduce
+Diccionarios: implementarlo como estructuras de almacenamiento de datos
+Conjuntos: emplear uso
+Pruebas unitarias: emplear uso (al menos 3)
