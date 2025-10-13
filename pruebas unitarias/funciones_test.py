@@ -1,4 +1,11 @@
-from funciones_prueba import *
+from util import generarId
 
-def test_suma():
-    assert funcionsuma(4,5) == 9
+def test_generarId():
+    matriz = [
+    [1, 'Pedro', 'González', '42123456'],
+    [2, 'Sofia', 'Rodríguez', '38765432'],
+    [3, 'Miguel', 'Torres', '40987654'],
+    [4, 'Valentina', 'Silva', '39456123'],
+    [5, 'Diego', 'Morales', '41789012'],
+    ]
+    assert generarId(matriz) == 6
