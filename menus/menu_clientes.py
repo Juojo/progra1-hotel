@@ -32,13 +32,17 @@ def mostrarIngresarMenuClientes(clientes):
                 mostrarMenuClientes()
 
         if opcion_seleccionada == 1:
-            agregarCliente(clientes)
+            #agregarCliente(clientes)
+            pass
         elif opcion_seleccionada == 2:
-            modificarCliente(clientes)
+            #modificarCliente(clientes)
+            pass
         elif opcion_seleccionada == 3:
-            borrarCliente(clientes)
+            #borrarCliente(clientes)
+            pass
         elif opcion_seleccionada == 4:
-            mostrarClientes(clientes)
+            #mostrarClientes(clientes)
+            pass
         else:
             if opcion_seleccionada != 0:
                 print()

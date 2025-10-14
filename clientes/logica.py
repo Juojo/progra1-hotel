@@ -1,5 +1,5 @@
 from util import *
-
+'''
 def agregarCliente(clientes):
     dni = str(pedir_entero("Ingrese el DNI del cliente:"))
     cliente_existente = None
@@ -40,7 +40,7 @@ def borrarCliente(clientes):
 def modificarCliente(clientes):
     dni = str(pedir_entero("Ingrese el DNI del cliente: "))
 
-      # Creamos una lista con todos los DNIs de los clientes
+    # Creamos una lista con todos los DNIs de los clientes
     dnis = [c[3] for c in clientes]
 
     # Verificamos si el DNI ingresado existe
@@ -76,4 +76,38 @@ def mostrarClientes(clientes):
     print("-" * 68)
     for cliente in clientes:
         print(f"{cliente[0]:<10} {cliente[1]:<20} {cliente[2]:<20} {cliente[3]:>15}")
+    esperarVolverMenu()
+'''
+
+def cargar_matriz_en_archivo(clientes, archivo):
+    try:
+        lineas = [f"{id};{nombre};{apellido};{dni}\n" for id, nombre, apellido, dni in clientes]
+        arch = open(archivo, "wt",encoding="UTF-8")
+        arch.writelines(lineas)
+    except OSError as mensaje:
+        print("No se puede grabar el archivo:", mensaje)
+    finally:
+        try:
+            arch.close()
+        except NameError:
+            pass
+
+def mostrar_clientes(archivo, modo,):
+    try:
+        arch = open(archivo, modo, encoding="UTF-8")
+        print(f"{'ID':<10} {'Nombre':<20} {'Apellido':<20} {'DNI':>15}")
+        linea = arch.readline
+        while linea:
+            try:
+                id, nombre, apellido, dni = linea.strip().split(";")
+                print(f"{id:<10} {nombre:<20} {apellido:<20} {dni:>15}")
+            except:
+                print("Linea con formato incorrecta.")
+    except OSError:
+        print("Error. No se pudo abrir el archivo.")
+    finally:
+        try:
+            arch.close()
+        except:
+            print("No se pudo cerrar el archivo.")
     esperarVolverMenu()

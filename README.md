@@ -27,6 +27,7 @@ solapamiento  de  fechas  o  habitaciones  ya  ocupadas),  guardar  y  recuperar
 aseguren la integridad de su funcionamiento.
 
 Observaciones:
+Expresiones regulares: utilizar 2 mas
 Funciones Lambda: emplear uso de map
 Diccionarios: implementarlo como estructuras de almacenamiento de datos
 Conjuntos: emplear uso
