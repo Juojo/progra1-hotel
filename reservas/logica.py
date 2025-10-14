@@ -1,5 +1,6 @@
 from util import *
 from datetime import date
+from functools import reduce
 
 def calcularPrecio(precio_habitacion, fecha_ingreso, fecha_egreso):
     extraerDia = lambda fecha_string: int(fecha_string[:2])
@@ -133,8 +134,8 @@ def maxPrecioReservas(reservas):
         "cantidad": sum(1 for reserva in reservas if reserva[6] == max(precios))
     }
     
-    print(f"Precio máximo: {resultados_precios_maximos["precio_max"]}")
-    print(f"Cantidad de reservas con ese precio: {resultados_precios_maximos["cantidad"]}")
+    print(f"Precio máximo: {resultados_precios_maximos['precio_max']}")
+    print(f"Cantidad de reservas con ese precio: {resultados_precios_maximos['cantidad']}")
     esperarVolverMenu()
 
 def minYMaxPrecioReservas(reservas):
@@ -155,7 +156,8 @@ def promedioPrecioReservas(reservas):
     imprimirTituloOpcion("Promedio de precios de reservas")
 
     precios = [reserva[6] for reserva in reservas]
-    promedio = sum(precios) / len(precios)
+    total = reduce(lambda total_acumulado, precio: total_acumulado + precio, precios)
+    promedio = total / len(precios)
     
     print(f"Promedio de precios de las reservas: {promedio:.2f}")
     esperarVolverMenu()

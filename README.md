@@ -27,7 +27,7 @@ solapamiento  de  fechas  o  habitaciones  ya  ocupadas),  guardar  y  recuperar
 aseguren la integridad de su funcionamiento.
 
 Observaciones:
-Funciones Lambda: emplear uso de map y reduce
+Funciones Lambda: emplear uso de map
 Diccionarios: implementarlo como estructuras de almacenamiento de datos
 Conjuntos: emplear uso
 Pruebas unitarias: emplear uso (al menos 3)
