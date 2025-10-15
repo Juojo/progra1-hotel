@@ -2,4 +2,5 @@
 2;Sofia;Rodríguez;38765432
 3;Miguel;Torres;40987654
 4;Valentina;Silva;39456123
-5;Diego;Morales;41789012
+5;Diego;Morales;417890126;rodrigo;galarce;12345
+6;rodrigo;galarce;2341

@@ -32,8 +32,7 @@ def mostrarIngresarMenuClientes(clientes):
                 mostrarMenuClientes()
 
         if opcion_seleccionada == 1:
-            #agregarCliente(clientes)
-            pass
+            agregar_cliente(archivo)
         elif opcion_seleccionada == 2:
             #modificarCliente(clientes)
             pass
@@ -41,8 +40,7 @@ def mostrarIngresarMenuClientes(clientes):
             #borrarCliente(clientes)
             pass
         elif opcion_seleccionada == 4:
-            #mostrarClientes(clientes)
-            pass
+            mostrar_clientes(archivo)            
         else:
             if opcion_seleccionada != 0:
                 print()
@@ -51,3 +49,5 @@ def mostrarIngresarMenuClientes(clientes):
 
         if opcion_seleccionada != 0:
             mostrarMenuClientes() # Muestra el print del menu luego de salir de la opcion seleccionada
+
+archivo = "C:/Users/roig2/Downloads/PROGRAMACION 1/progra1-hotel/clientes/datos_clientes.txt"

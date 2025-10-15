@@ -92,17 +92,18 @@ def cargar_matriz_en_archivo(clientes, archivo):
         except NameError:
             pass
 
-def mostrar_clientes(archivo, modo,):
+def mostrar_clientes(archivo):
     try:
-        arch = open(archivo, modo, encoding="UTF-8")
+        arch = open(archivo, "r", encoding="UTF-8")
         print(f"{'ID':<10} {'Nombre':<20} {'Apellido':<20} {'DNI':>15}")
-        linea = arch.readline
-        while linea:
-            try:
-                id, nombre, apellido, dni = linea.strip().split(";")
+        for linea in arch:
+            datos = dividir_linea_clientes(linea)
+            if datos:
+                id, nombre, apellido, dni = datos
                 print(f"{id:<10} {nombre:<20} {apellido:<20} {dni:>15}")
-            except:
-                print("Linea con formato incorrecta.")
+            else:
+                if linea.strip() != "":
+                    print("Linea con formato incorrecta.")
     except OSError:
         print("Error. No se pudo abrir el archivo.")
     finally:
@@ -111,3 +112,56 @@ def mostrar_clientes(archivo, modo,):
         except:
             print("No se pudo cerrar el archivo.")
     esperarVolverMenu()
+
+def agregar_cliente(archivo):    
+    nuevo_dni = str(pedir_entero("Ingrese el DNI del cliente: "))
+    cliente_existente = False
+
+    try:
+        arch = open(archivo, "r", encoding="UTF-8")
+        linea = arch.readline()
+        while linea:
+            datos = dividir_linea_clientes(linea)
+            if datos:
+                id, nombre, apellido, dni = datos
+                if dni == nuevo_dni:
+                    cliente_existente = True
+                    break
+            linea = arch.readline()
+    except FileNotFoundError:
+        pass
+    finally:
+        try:
+            arch.close()
+        except:
+            pass
+
+    if cliente_existente:
+        print("Ya existe un cliente con ese DNI.")
+        esperarVolverMenu()
+        return
+    else:
+        nuevo_id = generar_id_archivo(archivo)
+        nuevo_nombre = input("Ingrese el nombre del cliente: ")
+        nuevo_apellido = input("Ingrese el apellido del cliente: ")
+
+    try:
+        arch = open(archivo, "a", encoding="UTF-8")
+        arch.write(f"{nuevo_id};{nuevo_nombre};{nuevo_apellido};{nuevo_dni}\n")
+        print("Se agregó el cliente correctamente.")
+    except OSError as mensaje:
+        print("No se puede grabar el archivo:", mensaje)
+    finally:
+        try:
+            arch.close()
+        except NameError:
+            pass
+    esperarVolverMenu()
+
+def dividir_linea_clientes(linea):
+    partes = linea.strip().split(";")
+    if len(partes) == 4:
+        id, nombre, apellido, dni = partes
+        return id, nombre, apellido, dni
+    else:
+        return None

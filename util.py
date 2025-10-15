@@ -24,6 +24,20 @@ def generarId(matriz):
 
     return nuevoId
 
+def generar_id_archivo(archivo):
+    ultimo_id = 0
+    try:
+        with open(archivo, "rt", encoding="UTF-8") as arch:
+            for linea in arch:
+                datos = linea.strip().split(";")
+                if datos and datos[0].isdigit():
+                    ultimo_id = int(datos[0]) # se pasa a entero
+    except FileNotFoundError:
+        pass  # Si no existe el archivo, empezamos desde cero
+
+    nuevo_id = ultimo_id + 1
+    return nuevo_id
+
 def pedir_entero(mensaje):
     while True:
         valor = input(mensaje)
