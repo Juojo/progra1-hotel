@@ -31,4 +31,3 @@ Expresiones regulares: utilizar 2 mas
 Funciones Lambda: emplear uso de map
 Diccionarios: implementarlo como estructuras de almacenamiento de datos
 Conjuntos: emplear uso
-Pruebas unitarias: emplear uso (al menos 3)
