@@ -1,9 +1,5 @@
 from util import *
 
-import manejo_archivos
-
-habitaciones = manejo_archivos.leerArchivoJson("h") # "h" es el prefijo definido para la ruta del archivo habitaciones.json
-
 def mostrarHabitaciones(habitaciones):
     print("-" * 66)
     print(f"{'Nro_habitación':<15} {'Tipo':<15} {'Capacidad':<10} {'Estado':<12} {'Precio':>10}")

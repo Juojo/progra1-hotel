@@ -1,7 +1,10 @@
 from menus.menu_principal import mostrarIngresarMenuLogin, mostrarIngresarMenuPrincipal
 from clientes.datos import clientes
 from reservas.datos import reservas, generarPrecioTotalReservasDefault
-from habitaciones.datos import habitaciones
+
+import manejo_archivos
+
+habitaciones = manejo_archivos.leerArchivoJson("h") # "h" es el prefijo definido para la ruta del archivo habitaciones.json
 
 if __name__ == "__main__":
     generarPrecioTotalReservasDefault(habitaciones)
