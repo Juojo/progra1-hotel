@@ -3,6 +3,6 @@
         "tipo": "Suite",
         "capacidad": 2,
         "estado": "Libre",
-        "precio": "200000"
+        "precio": 200000
     }
 }

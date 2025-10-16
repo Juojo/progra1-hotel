@@ -8,8 +8,16 @@ def mostrarHabitaciones(habitaciones):
     print("-" * 66)
     print(f"{'Nro_habitación':<15} {'Tipo':<15} {'Capacidad':<10} {'Estado':<12} {'Precio':>10}")
     print("-" * 66)
-    for habitacion in habitaciones:
-        print(f"{habitacion[0]:<15} {habitacion[1]:<15} {habitacion[2]:<10} {habitacion[3]:<12} {habitacion[4]:>10}")
+    
+    for numero_hab, datos_hab in habitaciones.items(): # Itera sobre cada key, value del diccionario
+        numero = numero_hab.split("_")[1] # Formato recibido: "hab_101"
+        tipo = datos_hab["tipo"]
+        capacidad = str(datos_hab["capacidad"])
+        estado = datos_hab["estado"]
+        precio = str(datos_hab["precio"])
+
+        print(f"{numero:<15} {tipo:<15} {capacidad:<10} {estado:<12} {precio:>10}")
+    
     esperarVolverMenu()
 
 def modificarHabitacion(habitaciones):
