@@ -5,8 +5,8 @@ def mostrarHabitaciones(habitaciones):
     print(f"{'Nro_habitación':<15} {'Tipo':<15} {'Capacidad':<10} {'Estado':<12} {'Precio':>10}")
     print("-" * 66)
     
-    for numero_hab, datos_hab in habitaciones.items(): # Itera sobre cada key, value del diccionario
-        numero = numero_hab.split("_")[1] # Formato recibido: "hab_101"
+    for codigo_hab, datos_hab in habitaciones.items(): # Itera sobre cada key, value del diccionario
+        numero = codigo_hab.split("_")[1] # Formato recibido: "hab_101"
         tipo = datos_hab["tipo"]
         capacidad = str(datos_hab["capacidad"])
         estado = datos_hab["estado"]
@@ -17,29 +17,30 @@ def mostrarHabitaciones(habitaciones):
     esperarVolverMenu()
 
 def modificarHabitacion(habitaciones):
-    id_habitacion = pedir_entero("Ingrese el Nro. de habitación: ")
+    numero_hab = pedir_entero("Ingrese el Nro. de habitación: ")
 
     # se crea una lista con todos los numeros de habitacion
-    numeros = [hab[0] for hab in habitaciones]
+    numeros = [numero_hab.split("_")[1] for numero_hab, datos_hab in habitaciones.items()]
 
-    if id_habitacion in numeros:
-        indice = numeros.index(id_habitacion)
-        habitacion = habitaciones[indice]
+    if numero_hab in numeros:
+         #habitacion = habitaciones.get(cod_hab)
 
         nuevo_tipo = input("Ingrese el nuevo tipo (0 para no modificar): ")
         nueva_capacidad = str(pedir_entero("Ingrese la nueva capacidad (0 para no modificar): "))
         nuevo_estado = input("Ingrese el nuevo estado (0 para no modificar): ")
-        nuevo_precio = pedir_entero("Ingrese el nuevo precio (0 para no modificar): ")
+        nuevo_precio = str(pedir_entero("Ingrese el nuevo precio (0 para no modificar): "))
+        
+        cod_hab = "hab_"+numero_hab
 
         # se actualiza solo si corresponde
         if nuevo_tipo != "0":
-            habitacion[1] = nuevo_tipo
+            habitaciones[cod_hab]["tipo"] = nuevo_tipo
         if nueva_capacidad != "0":
-            habitacion[2] = nueva_capacidad
+            habitaciones[cod_hab]["capacidad"] = nueva_capacidad
         if nuevo_estado != "0":
-            habitacion[3] = nuevo_estado
+            habitaciones[cod_hab]["estado"] = nuevo_estado
         if nuevo_precio != "0":
-            habitacion[4] = int(nuevo_precio)
+            habitaciones[cod_hab]["precio"] = nuevo_precio
 
         print("Se han modificado los datos de la habitación correctamente.")
     else:
