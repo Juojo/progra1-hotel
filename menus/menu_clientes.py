@@ -34,11 +34,9 @@ def mostrarIngresarMenuClientes(clientes):
         if opcion_seleccionada == 1:
             agregar_cliente(archivo)
         elif opcion_seleccionada == 2:
-            #modificarCliente(clientes)
-            pass
+            modificar_cliente(archivo)
         elif opcion_seleccionada == 3:
-            #borrarCliente(clientes)
-            pass
+            baja_cliente(archivo)
         elif opcion_seleccionada == 4:
             mostrar_clientes(archivo)            
         else:
