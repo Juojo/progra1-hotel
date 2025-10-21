@@ -73,7 +73,7 @@ def bajaHabitacion(habitaciones, habitaciones_baja):
     cod_hab_buscado = formatearCodigoHab(numero_hab)
 
     if cod_hab_buscado in habitaciones:
-        hab_baja = habitaciones[cod_hab_buscado][:]
+        hab_baja = habitaciones[cod_hab_buscado][:] # Tira error
         
         razon = input("Ingrese la razón de la baja: ")
         hab_baja["razon"] = razon

@@ -12,7 +12,7 @@ def main():
     login_exitoso = mostrarIngresarMenuLogin()
 
     if login_exitoso:
-        mostrarIngresarMenuPrincipal(clientes, reservas, habitaciones)
+        mostrarIngresarMenuPrincipal(clientes, reservas, habitaciones, habitaciones_baja)
     print("Fin programa")
 
 if __name__ == "__main__":
