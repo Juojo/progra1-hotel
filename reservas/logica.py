@@ -1,6 +1,7 @@
 from util import *
 from datetime import date
 from functools import reduce
+import json
 
 def calcularPrecio(precio_habitacion, fecha_ingreso, fecha_egreso):
     extraerDia = lambda fecha_string: int(fecha_string[:2])
@@ -160,4 +161,38 @@ def promedioPrecioReservas(reservas):
     promedio = total / len(precios)
     
     print(f"Promedio de precios de las reservas: {promedio:.2f}")
+    esperarVolverMenu()
+
+archivo = "reservas/datos_reservas.txt"
+
+def dividir_linea_reservas(linea):
+    if linea.strip() == "": # Si la línea está vacía o tiene saltos se ignora
+        return None
+    
+    partes = linea.strip().split(";")
+    if len(partes) == 7:
+        id_reserva, id_cliente, id_habitacion, fecha_ingreso, fecha_egreso, estado, precio_total = partes
+        return id_reserva, id_cliente, id_habitacion, fecha_ingreso, fecha_egreso, estado, precio_total
+    else:
+        return None
+    
+def mostrar_reservas(archivo):
+    try:
+        arch = open(archivo, "r", encoding="UTF-8")
+        print(f"{'ID':<10} {'Cliente':<10} {'Habitacion':<10} {'Ingreso':<10} {'Egreso':<10} {'Precio Total':>15}")
+        for linea in arch:
+            datos = dividir_linea_reservas(linea)
+            if datos:
+                id_reserva, id_cliente, id_habitacion, fecha_ingreso, fecha_egreso, estado, precio_total = datos
+                print(f"{id_reserva:<10} {id_cliente:<10} {id_habitacion:<10} {fecha_ingreso:<10} {fecha_egreso:<10} {precio_total:>15}")
+            else:
+                if linea.strip() != "":
+                    print("Linea con formato incorrecta.")
+    except OSError as e:
+        print("Error. No se pudo abrir el archivo.",e)
+    finally:
+        try:
+            arch.close()
+        except:
+            print("No se pudo cerrar el archivo.")
     esperarVolverMenu()
