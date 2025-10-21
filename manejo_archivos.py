@@ -1,9 +1,12 @@
 import json, sys
 
 ruta_habitaciones = "./informacion_almacenada/habitaciones.json"
+ruta_habitaciones_baja = "./informacion_almacenada/habitaciones_baja.json"
 
 def leerArchivoJson(ruta_archivo):
     if ruta_archivo == "h": ruta_archivo = ruta_habitaciones
+    if ruta_archivo == "hb": ruta_archivo = ruta_habitaciones_baja
+
 
     try:
         archivo = open(ruta_archivo, "r", encoding="utf-8", newline="\n")
@@ -22,6 +25,12 @@ def leerArchivoJson(ruta_archivo):
     except Exception as e:
         print("Ocurrio un error con la lectura del archivo:", e)
         sys.exit(1) # Se finaliza el programa si ocurre un error
+
+def agregarHabitacion(nueva_habitacion, habitaciones, baja=False):
+    ruta = ruta_habitaciones_baja if baja else ruta_habitaciones
+
+
+    
 
 # def agregarUsuarioNuevo(usuario_nuevo, usuarios):
 #     ultimo_id = list(usuarios.keys())[-1]

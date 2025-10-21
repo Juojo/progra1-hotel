@@ -1,4 +1,7 @@
 from util import *
+import manejo_archivos
+
+formatearCodigoHab = lambda numero_hab: "hab_"+numero_hab
 
 def mostrarHabitaciones(habitaciones):
     print("-" * 66)
@@ -16,6 +19,23 @@ def mostrarHabitaciones(habitaciones):
     
     esperarVolverMenu()
 
+def mostrarHabitacionesBaja(habitaciones_baja):
+    print("-" * 87)
+    print(f"{'Nro_habitación':<15} {'Tipo':<15} {'Capacidad':<10} {'Estado':<12} {'Precio':<10} {'Razón':>20}")
+    print("-" * 87)
+
+    for codigo_hab, datos_hab in habitaciones_baja.items(): # Itera sobre cada key, value del diccionario
+        numero = codigo_hab.split("_")[1] # Formato recibido: "hab_101"
+        tipo = datos_hab["tipo"]
+        capacidad = str(datos_hab["capacidad"])
+        estado = datos_hab["estado"]
+        precio = str(datos_hab["precio"])
+        razon = datos_hab["razon"]
+
+        print(f"{numero:<15} {tipo:<15} {capacidad:<10} {estado:<12} {precio:>10} {razon:>10}")
+   
+    esperarVolverMenu()
+
 def modificarHabitacion(habitaciones):
     numero_hab = pedir_entero("Ingrese el Nro. de habitación: ")
 
@@ -30,7 +50,7 @@ def modificarHabitacion(habitaciones):
         nuevo_estado = input("Ingrese el nuevo estado (0 para no modificar): ")
         nuevo_precio = str(pedir_entero("Ingrese el nuevo precio (0 para no modificar): "))
         
-        cod_hab = "hab_"+numero_hab
+        cod_hab = formatearCodigoHab(numero_hab)
 
         # se actualiza solo si corresponde
         if nuevo_tipo != "0":
@@ -49,73 +69,58 @@ def modificarHabitacion(habitaciones):
     esperarVolverMenu()
 
 def bajaHabitacion(habitaciones, habitaciones_baja):
-    id = pedir_entero("Ingrese el Nro. de habitación: ")
-    habitacion_encontrada = None  # Inicialmente no encontrada
+    numero_hab = pedir_entero("Ingrese el Nro. de habitación: ")
+    cod_hab_buscado = formatearCodigoHab(numero_hab)
 
-    for hab in habitaciones:
-        if hab[0] == id:
-            habitacion_encontrada = hab  # Se guarda la habitación encontrada
-
-    if habitacion_encontrada is not None:
+    if cod_hab_buscado in habitaciones:
+        hab_baja = habitaciones[cod_hab_buscado][:]
+        
         razon = input("Ingrese la razón de la baja: ")
-        # se copia la habitación con slicing
-        habitacion = habitacion_encontrada[:]
-        # se agrega la razón
-        habitacion.append(razon)
-        # se mueve a la matriz de bajas
-        habitaciones_baja.append(habitacion)
-        # se elimina de la lista principal
-        habitaciones.remove(habitacion_encontrada)
+        hab_baja["razon"] = razon
+
+        manejo_archivos.agregarHabitacion(hab_baja, habitaciones_baja, baja=True)
+        manejo_archivos.eliminarHabitacion(habitaciones[cod_hab_buscado], habitaciones)
+
         print("La habitación ha sido dada de baja por la siguiente razón:", razon)
     else:
-        print("Error. No existe habitación con ese número.")
+        print("No existe habitación con ese número.")
 
     esperarVolverMenu()
 
 def reintegrarHabitacion(habitaciones, habitaciones_baja):
-    id = pedir_entero("Ingrese el Nro. de habitación a reintegrar: ")
-    habitacion_baja = None  # Inicialmente no encontrada
+    numero_hab = pedir_entero("Ingrese el Nro. de habitación a reintegrar: ")
+    cod_hab_buscado = formatearCodigoHab(numero_hab)
 
-    for hab in habitaciones_baja:
-        if hab[0] == id:
-            habitacion_baja = hab  # Se guarda si se encuentra
+    if cod_hab_buscado in habitaciones_baja:
+        hab_alta = habitaciones_baja[cod_hab_buscado][:]
+        hab_alta.pop("razon") # Se elimna la razon de la baja
 
-    if habitacion_baja is not None:
-        # Se crea una copia de la habitación sin la razón de la baja
-        habitacion = habitacion_baja[:-1]  
+        manejo_archivos.eliminarHabitacion(habitaciones_baja[cod_hab_buscado], habitaciones_baja, baja=True)
+        manejo_archivos.agregarHabitacion(hab_alta, habitaciones)
 
-        # Se busca la posición que le corresponde en la lista principal según el Nro_habitacion
-        pos = 0
-        for hab in habitaciones:
-            if hab[0] < id:
-                pos += 1
-        
-        habitaciones.insert(pos, habitacion)
-        habitaciones_baja.remove(habitacion_baja)
-
-        print(f"La habitación Nro. {id} ha sido reintegrada correctamente.")
+        print(f"La habitación Nro. {numero_hab} ha sido reintegrada correctamente.")
     else:
-        print("Error. No existe una habitación con ese número en la lista de bajas.")
+        print("No existe una habitación con ese número en la lista de bajas.")
 
     esperarVolverMenu()
 
-def agregarHabitacion(habitaciones):    
-    nuevo_id = generarId(habitaciones)
+def agregarHabitacion(habitaciones):
+    num_hab = str(pedir_entero("Ingrese el numero de habitacion"))
     tipo = input("Ingrese el tipo de habitación: ")
-    capacidad = str(pedir_entero("Ingrese la capacidad: "))
+    capacidad = pedir_entero("Ingrese la capacidad: ")
     estado = input("Ingrese el estado: ")
     precio = pedir_entero("Ingrese el precio: ")
-    
-    habitacion = [nuevo_id, tipo, capacidad, estado, precio]
-    habitaciones.append(habitacion)
-    print(f"\nLa habitación {nuevo_id} se agregó correctamente.")
-    
-    esperarVolverMenu()
 
-def mostrarHabitacionesBaja(habitaciones_baja):
-    print("-" * 87)
-    print(f"{'Nro_habitación':<15} {'Tipo':<15} {'Capacidad':<10} {'Estado':<12} {'Precio':<10} {'Razón':>20}")
-    print("-" * 87)
-    for habitacion in habitaciones_baja:
-        print(f"{habitacion[0]:<15} {habitacion[1]:<15} {habitacion[2]:<10} {habitacion[3]:<12} {habitacion[4]:<10} {habitacion[5]:>20}")
+    nueva_habitacion = {
+        ("hab_"+num_hab): {
+            "tipo": tipo,
+            "capacidad": capacidad,
+            "estado": estado,
+            "precio": precio
+        }
+    }
+
+    manejo_archivos.agregarHabitacion(nueva_habitacion, habitaciones)
+    print(f"\nLa habitación {num_hab} se agregó correctamente.")
+    
     esperarVolverMenu()
