@@ -32,6 +32,9 @@ def agregarHabitacion(nueva_habitacion, habitaciones, baja=False):
 def eliminarHabitacion(cod_habitacion, habitaciones, baja=False):
     ruta = ruta_habitaciones_baja if baja else ruta_habitaciones
 
+def actualizarHabitacion(cod_hab, hab_modificada, habitaciones):
+    pass
+
 
 # def agregarUsuarioNuevo(usuario_nuevo, usuarios):
 #     ultimo_id = list(usuarios.keys())[-1]
