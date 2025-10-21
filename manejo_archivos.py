@@ -29,8 +29,9 @@ def leerArchivoJson(ruta_archivo):
 def agregarHabitacion(nueva_habitacion, habitaciones, baja=False):
     ruta = ruta_habitaciones_baja if baja else ruta_habitaciones
 
+def eliminarHabitacion(cod_habitacion, habitaciones, baja=False):
+    ruta = ruta_habitaciones_baja if baja else ruta_habitaciones
 
-    
 
 # def agregarUsuarioNuevo(usuario_nuevo, usuarios):
 #     ultimo_id = list(usuarios.keys())[-1]

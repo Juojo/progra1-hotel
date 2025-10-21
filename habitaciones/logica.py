@@ -1,7 +1,7 @@
 from util import *
 import manejo_archivos
 
-formatearCodigoHab = lambda numero_hab: "hab_"+numero_hab
+formatearCodigoHab = lambda numero_hab: "hab_"+str(numero_hab)
 
 def mostrarHabitaciones(habitaciones):
     print("-" * 66)
@@ -79,7 +79,7 @@ def bajaHabitacion(habitaciones, habitaciones_baja):
         hab_baja["razon"] = razon
 
         manejo_archivos.agregarHabitacion(hab_baja, habitaciones_baja, baja=True)
-        manejo_archivos.eliminarHabitacion(habitaciones[cod_hab_buscado], habitaciones)
+        manejo_archivos.eliminarHabitacion(cod_hab_buscado, habitaciones)
 
         print("La habitación ha sido dada de baja por la siguiente razón:", razon)
     else:
@@ -95,7 +95,7 @@ def reintegrarHabitacion(habitaciones, habitaciones_baja):
         hab_alta = habitaciones_baja[cod_hab_buscado][:]
         hab_alta.pop("razon") # Se elimna la razon de la baja
 
-        manejo_archivos.eliminarHabitacion(habitaciones_baja[cod_hab_buscado], habitaciones_baja, baja=True)
+        manejo_archivos.eliminarHabitacion(cod_hab_buscado, habitaciones_baja, baja=True)
         manejo_archivos.agregarHabitacion(hab_alta, habitaciones)
 
         print(f"La habitación Nro. {numero_hab} ha sido reintegrada correctamente.")
