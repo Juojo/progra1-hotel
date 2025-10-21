@@ -26,8 +26,8 @@ lizadas en un período. El sistema deberá validar correctamente los datos ingre
 solapamiento  de  fechas  o  habitaciones  ya  ocupadas),  guardar  y  recuperar  información mediante archivos, utilizar Git para el control de versiones y contener pruebas unitarias que 
 aseguren la integridad de su funcionamiento.
 
-Observaciones:
-Expresiones regulares: utilizar 2 mas
-Funciones Lambda: emplear uso de map
-Diccionarios: implementarlo como estructuras de almacenamiento de datos
-Conjuntos: emplear uso
+# Observaciones
+* Expresiones regulares: utilizar 2 mas
+* Funciones Lambda: emplear uso de map
+* Diccionarios: implementarlo como estructuras de almacenamiento de datos (casi)
+* Conjuntos: emplear uso
