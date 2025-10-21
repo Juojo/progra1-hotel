@@ -105,8 +105,8 @@ def mostrar_clientes(archivo):
             else:
                 if linea.strip() != "":
                     print("Linea con formato incorrecta.")
-    except OSError:
-        print("Error. No se pudo abrir el archivo.")
+    except OSError as e:
+        print("Error. No se pudo abrir el archivo.",e)
     finally:
         try:
             arch.close()
@@ -233,7 +233,7 @@ def modificar_cliente(archivo):
                     if nuevo_apellido == "":
                         nuevo_apellido = apellido
                     
-                    nuevo_dni = str(pedir_entero("Ingrese el nuevo DNI del cliente (0 para mantener): "))
+                    nuevo_dni = pedir_entero("Ingrese el nuevo DNI del cliente (0 para mantener): ")
                     if nuevo_dni == 0:
                         nuevo_dni = dni
 
@@ -263,3 +263,6 @@ def modificar_cliente(archivo):
     else:
         os.remove(temp)
         print(f"No se encontró el cliente con el DNI N° {dni_modificar}.")
+
+
+archivo = "clientes/datos_clientes.txt"

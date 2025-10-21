@@ -47,5 +47,3 @@ def mostrarIngresarMenuClientes(clientes):
 
         if opcion_seleccionada != 0:
             mostrarMenuClientes() # Muestra el print del menu luego de salir de la opcion seleccionada
-
-archivo = "C:/Users/roig2/Downloads/PROGRAMACION 1/progra1-hotel/clientes/datos_clientes.txt"
