@@ -46,19 +46,21 @@ def modificarHabitacion(habitaciones):
         nuevo_estado = input("Ingrese el nuevo estado (0 para no modificar): ")
         nuevo_precio = str(pedir_entero("Ingrese el nuevo precio (0 para no modificar): "))
         
-        hab_modificada = habitaciones[cod_hab].copy()
+        hab_modificada = {
+            cod_hab: habitaciones[cod_hab].copy()
+        }
 
         # se actualiza solo si corresponde
         if nuevo_tipo != "0":
-            hab_modificada["tipo"] = nuevo_tipo
+            hab_modificada[cod_hab]["tipo"] = nuevo_tipo
         if nueva_capacidad != "0":
-            hab_modificada["capacidad"] = nueva_capacidad
+            hab_modificada[cod_hab]["capacidad"] = nueva_capacidad
         if nuevo_estado != "0":
-            hab_modificada["estado"] = nuevo_estado
+            hab_modificada[cod_hab]["estado"] = nuevo_estado
         if nuevo_precio != "0":
-            hab_modificada["precio"] = nuevo_precio
+            hab_modificada[cod_hab]["precio"] = nuevo_precio
 
-        if manejo_archivos.actualizarHabitacion(cod_hab, hab_modificada, habitaciones):
+        if manejo_archivos.actualizarHabitacion(hab_modificada, habitaciones):
             print("Se han modificado los datos de la habitación correctamente.")
     else:
         print("Error. No hay habitación con ese Nro.")

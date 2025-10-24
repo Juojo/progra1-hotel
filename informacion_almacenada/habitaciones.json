@@ -1,8 +1,8 @@
 {
     "hab_202": {
         "tipo": "Suite",
-        "capacidad": 2,
-        "estado": "Libre",
+        "capacidad": "10",
+        "estado": "Ocupada",
         "precio": 200000
     }
 }

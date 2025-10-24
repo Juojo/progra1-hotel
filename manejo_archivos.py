@@ -37,8 +37,9 @@ def eliminarHabitacion(cod_habitacion, habitaciones, baja=False):
     habitaciones.pop(cod_habitacion)
     sobreescribirJson(habitaciones, ruta, "Error al borrar la habitacion")
 
-def actualizarHabitacion(cod_hab, hab_modificada, habitaciones):
-    pass
+def actualizarHabitacion(hab_modificada, habitaciones):
+    habitaciones.update(hab_modificada)
+    sobreescribirJson(habitaciones, ruta_habitaciones, "Error al actualizar la habitacion")
 
 def sobreescribirJson(diccionario, ruta, mensaje_error):
     try:
