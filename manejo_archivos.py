@@ -7,7 +7,6 @@ def leerArchivoJson(ruta_archivo):
     if ruta_archivo == "h": ruta_archivo = ruta_habitaciones
     if ruta_archivo == "hb": ruta_archivo = ruta_habitaciones_baja
 
-
     try:
         archivo = open(ruta_archivo, "r", encoding="utf-8", newline="\n")
         
@@ -28,6 +27,18 @@ def leerArchivoJson(ruta_archivo):
 
 def agregarHabitacion(nueva_habitacion, habitaciones, baja=False):
     ruta = ruta_habitaciones_baja if baja else ruta_habitaciones
+
+    habitaciones.update(nueva_habitacion)
+
+    # Almacena en el json la nueva habitacion
+    try:
+        with open(ruta, "w", encoding="utf-8") as archivo: # Abre el archivo en append mode (Escribe al final del arhivo)
+            json.dump(habitaciones, archivo, ensure_ascii=False, indent=4)
+            archivo.write("\n")
+        return True
+    except Exception as e:
+        print("\nError al guardar la nueva habitacion:", e)
+        return False
 
 def eliminarHabitacion(cod_habitacion, habitaciones, baja=False):
     ruta = ruta_habitaciones_baja if baja else ruta_habitaciones

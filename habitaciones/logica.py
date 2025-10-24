@@ -46,7 +46,7 @@ def modificarHabitacion(habitaciones):
         nuevo_estado = input("Ingrese el nuevo estado (0 para no modificar): ")
         nuevo_precio = str(pedir_entero("Ingrese el nuevo precio (0 para no modificar): "))
         
-        hab_modificada = habitaciones[cod_hab][:]
+        hab_modificada = habitaciones[cod_hab].copy()
 
         # se actualiza solo si corresponde
         if nuevo_tipo != "0":
@@ -70,10 +70,15 @@ def bajaHabitacion(habitaciones, habitaciones_baja):
     cod_hab_buscado = formatearCodigoHab(numero_hab)
 
     if cod_hab_buscado in habitaciones:
-        hab_baja = habitaciones[cod_hab_buscado][:] # Tira error
+        # Se duplica la habitacion y se conserva su codigo
+        hab_baja = {
+            cod_hab_buscado: habitaciones[cod_hab_buscado].copy()
+        }
         
         razon = input("Ingrese la razón de la baja: ")
-        hab_baja["razon"] = razon
+        hab_baja[cod_hab_buscado]["razon"] = razon
+
+        hab_baja[cod_hab_buscado]["estado"] = "-" # Se establece el estado como nulo, una habitacion dada de baja no tiene estado
 
         manejo_archivos.agregarHabitacion(hab_baja, habitaciones_baja, baja=True)
         manejo_archivos.eliminarHabitacion(cod_hab_buscado, habitaciones)
@@ -89,8 +94,12 @@ def reintegrarHabitacion(habitaciones, habitaciones_baja):
     cod_hab_buscado = formatearCodigoHab(numero_hab)
 
     if cod_hab_buscado in habitaciones_baja:
-        hab_alta = habitaciones_baja[cod_hab_buscado][:]
-        hab_alta.pop("razon") # Se elimna la razon de la baja
+        # Se duplica la habitacion y se conserva su codigo
+        hab_alta = {
+            cod_hab_buscado: habitaciones_baja[cod_hab_buscado].copy()
+        }
+        hab_alta[cod_hab_buscado].pop("razon") # Se elimna la razon de la baja
+        hab_alta[cod_hab_buscado]["estado"] = "Libre" # Se establece el estado como libre
 
         manejo_archivos.eliminarHabitacion(cod_hab_buscado, habitaciones_baja, baja=True)
         manejo_archivos.agregarHabitacion(hab_alta, habitaciones)
