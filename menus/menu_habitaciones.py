@@ -16,7 +16,7 @@ def mostrarMenuHabitaciones():
 ----------------------------------------
 """)
         
-def mostrarIngresarMenuHabitaciones(habitaciones):
+def mostrarIngresarMenuHabitaciones(habitaciones, habitaciones_baja):
     mostrarMenuHabitaciones()
     
     opcion_seleccionada = -1 # Se inicializa la variable

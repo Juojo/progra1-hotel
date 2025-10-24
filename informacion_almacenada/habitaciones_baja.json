@@ -1,0 +1,16 @@
+{
+    "hab_404": {
+        "tipo": "Suite",
+        "capacidad": 1,
+        "estado": "-",
+        "precio": 200000,
+        "razon": "Habitacion dada de baja por reparaciones"
+    },
+    "hab_101": {
+        "tipo": "Suite",
+        "capacidad": 2,
+        "estado": "-",
+        "precio": 200000,
+        "razon": "Esta rota la ducha"
+    }
+}

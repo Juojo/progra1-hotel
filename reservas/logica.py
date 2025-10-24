@@ -52,10 +52,14 @@ def ingresarNuevaReserva(reservas, habitaciones, clientes):
 
 
 def buscarPrecioHabitacion(id_habitacion, habitaciones):
-    habitacion = list(filter(lambda h: h[0] == id_habitacion, habitaciones))[0] # Devuelve la primera posicion de la lista
-    precio_habitacion = habitacion[4]
+    # habitacion = list(filter(lambda h: h[0] == id_habitacion, lista_habitaciones))[0] # Devuelve la primera posicion de la lista
+    # precio_habitacion = habitacion[4]
 
-    return precio_habitacion
+    cod_hab = "hab_"+str(id_habitacion)
+    if cod_hab in habitaciones:
+        return habitaciones[cod_hab]["precio"]
+    else:
+        return 0
 
 def modificarReserva(reservas):
     Id_reserva = pedir_entero("Ingrese el ID de la reserva: ")
