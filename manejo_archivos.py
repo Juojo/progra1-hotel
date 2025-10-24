@@ -29,23 +29,26 @@ def agregarHabitacion(nueva_habitacion, habitaciones, baja=False):
     ruta = ruta_habitaciones_baja if baja else ruta_habitaciones
 
     habitaciones.update(nueva_habitacion)
-
-    # Almacena en el json la nueva habitacion
-    try:
-        with open(ruta, "w", encoding="utf-8") as archivo: # Abre el archivo en append mode (Escribe al final del arhivo)
-            json.dump(habitaciones, archivo, ensure_ascii=False, indent=4)
-            archivo.write("\n")
-        return True
-    except Exception as e:
-        print("\nError al guardar la nueva habitacion:", e)
-        return False
+    sobreescribirJson(habitaciones, ruta, "Error al guardar la nueva habitacion")
 
 def eliminarHabitacion(cod_habitacion, habitaciones, baja=False):
     ruta = ruta_habitaciones_baja if baja else ruta_habitaciones
 
+    habitaciones.pop(cod_habitacion)
+    sobreescribirJson(habitaciones, ruta, "Error al borrar la habitacion")
+
 def actualizarHabitacion(cod_hab, hab_modificada, habitaciones):
     pass
 
+def sobreescribirJson(diccionario, ruta, mensaje_error):
+    try:
+        with open(ruta, "w", encoding="utf-8") as archivo:
+            json.dump(diccionario, archivo, ensure_ascii=False, indent=4)
+            archivo.write("\n")
+        return True
+    except Exception as e:
+        print(f"\n{mensaje_error}:", e)
+        return False
 
 # def agregarUsuarioNuevo(usuario_nuevo, usuarios):
 #     ultimo_id = list(usuarios.keys())[-1]

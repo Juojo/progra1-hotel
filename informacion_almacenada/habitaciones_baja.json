@@ -6,11 +6,11 @@
         "precio": 200000,
         "razon": "Habitacion dada de baja por reparaciones"
     },
-    "hab_202": {
+    "hab_101": {
         "tipo": "Suite",
         "capacidad": 2,
         "estado": "-",
         "precio": 200000,
-        "razon": "Mal"
+        "razon": "Esta rota la ducha"
     }
 }
