@@ -15,16 +15,15 @@ def leerArchivoJson(ruta_archivo):
             datos = json.load(archivo)
         except json.JSONDecodeError:
             print("Error al decodificar el archivo JSON.")
-            sys.exit(1) # Se finaliza el programa si ocurre un error
+            
 
         return datos
     except FileNotFoundError as e:
         print("No se encontro el archivo:", e)
-        sys.exit(1) # Se finaliza el programa si ocurre un error
+      
     except Exception as e:
         print("Ocurrio un error con la lectura del archivo:", e)
-        sys.exit(1) # Se finaliza el programa si ocurre un error
-
+        
 def agregarHabitacion(nueva_habitacion, habitaciones, baja=False):
     ruta = ruta_habitaciones_baja if baja else ruta_habitaciones
 
