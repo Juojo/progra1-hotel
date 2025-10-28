@@ -29,5 +29,10 @@ aseguren la integridad de su funcionamiento.
 # Observaciones
 * Expresiones regulares: utilizar 2 mas
 * Funciones Lambda: emplear uso de map
-* Diccionarios: implementarlo como estructuras de almacenamiento de datos (casi)
 * Conjuntos: emplear uso
+
+## Recursividad
+* minimo 3 usos de recursividad
+* recorrer una matriz y mostrarla
+* Recursion en estadistica, armar algo nuevo
+* Ejemplo 12, devolver valor total de todas las reservas
