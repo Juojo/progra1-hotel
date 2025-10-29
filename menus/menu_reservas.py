@@ -9,6 +9,7 @@ def mostrarMenuReservas():
 2. Modificar Reserva
 3. Cancelar Reserva
 4. Mostrar Reservas
+5. Aplicar descuento
 ----------------------------------------
 0. Volver
 ----------------------------------------
@@ -42,6 +43,8 @@ def mostrarIngresarMenuReservas(reservas, habitaciones, clientes):
             pass
         elif opcion_seleccionada == 4:
             mostrar_reservas(archivo)
+        elif opcion_seleccionada == 5:
+            aplicar_descuento(reservas)
         else:
             if opcion_seleccionada != 0:
                 print()

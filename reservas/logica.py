@@ -167,6 +167,31 @@ def promedioPrecioReservas(reservas):
     print(f"Promedio de precios de las reservas: {promedio:.2f}")
     esperarVolverMenu()
 
+def aplicar_descuento(reservas):
+    desc = int(input("Ingrese el descuento a aplicar: "))
+    id_reserva = pedir_entero("Ingrese la ID de la reserva: ")
+
+    if desc < 0 or desc > 100:
+        print("Error: el descuento debe estar entre 0 y 100.")
+        return
+    
+    reserva_encontrada = None
+    for reserva in reservas:
+        if reserva[0] == id_reserva:
+            reserva_encontrada = reserva
+            break
+    
+    if reserva_encontrada is not None:
+        precio_actual = reserva_encontrada[6]
+        precios = [precio_actual]
+        nuevos_precios = list(map(lambda x: x * (1 - desc / 100), precios))
+        reserva_encontrada[6] = nuevos_precios[0]
+        print(f"Descuento aplicado correctamente. Nuevo precio: ${reserva_encontrada[6]:.2f}")
+    else:
+        print("No se encontró una reserva con ese ID.")
+
+    esperarVolverMenu()
+
 archivo = "reservas/datos_reservas.txt"
 
 def dividir_linea_reservas(linea):
