@@ -129,44 +129,6 @@ def darBajaReserva(reservas):
 
     esperarVolverMenu()
 
-def maxPrecioReservas(reservas):
-    imprimirTituloOpcion("Contar reservas con precio máximo")
-    
-    precios = [reserva[6] for reserva in reservas] 
-
-    resultados_precios_maximos = {
-        "precio_max": max(precios),
-        "cantidad": sum(1 for reserva in reservas if reserva[6] == max(precios))
-    }
-    
-    print(f"Precio máximo: {resultados_precios_maximos['precio_max']}")
-    print(f"Cantidad de reservas con ese precio: {resultados_precios_maximos['cantidad']}")
-    esperarVolverMenu()
-
-def minYMaxPrecioReservas(reservas):
-    imprimirTituloOpcion("Precio mínimo y máximo")
-
-    precios = [reserva[6] for reserva in reservas]
-
-    resultado_precios = {
-        "precio_min": min(precios),
-        "precio_max": max(precios)
-    }
-    
-    print(f"Precio mínimo de reserva: {resultado_precios['precio_min']}")
-    print(f"Precio máximo de reserva: {resultado_precios['precio_max']}")
-    esperarVolverMenu()
-
-def promedioPrecioReservas(reservas):
-    imprimirTituloOpcion("Promedio de precios de reservas")
-
-    precios = [reserva[6] for reserva in reservas]
-    total = reduce(lambda total_acumulado, precio: total_acumulado + precio, precios)
-    promedio = total / len(precios)
-    
-    print(f"Promedio de precios de las reservas: {promedio:.2f}")
-    esperarVolverMenu()
-
 def aplicar_descuento(reservas):
     desc = int(input("Ingrese el descuento a aplicar: "))
     id_reserva = pedir_entero("Ingrese la ID de la reserva: ")

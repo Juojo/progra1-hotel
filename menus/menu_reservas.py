@@ -36,13 +36,11 @@ def mostrarIngresarMenuReservas(reservas, habitaciones, clientes):
             #agregar_reserva(archivo)
             pass
         elif opcion_seleccionada == 2:
-            #modificar_reserva(archivo)
-            pass
+            modificarReserva(reservas)
         elif opcion_seleccionada == 3:
-            #baja_reserva(archivo)
-            pass
+            darBajaReserva(reservas)
         elif opcion_seleccionada == 4:
-            mostrar_reservas(archivo)
+            mostrarReservas(reservas)
         elif opcion_seleccionada == 5:
             aplicar_descuento(reservas)
         else:

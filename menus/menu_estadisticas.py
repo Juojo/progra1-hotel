@@ -1,4 +1,4 @@
-from reservas import promedioPrecioReservas, maxPrecioReservas, minYMaxPrecioReservas
+from estadisticas import promedioPrecioReservas, contPrecioMaxReservas, minYMaxPrecioReservas
 
 def mostrarMenuEstadisticas():
             print("""
@@ -6,8 +6,8 @@ def mostrarMenuEstadisticas():
             Menú Estadisticas
 ----------------------------------------
 1. Promedio de precios de reservas
-2. Contar reservas con precio máximo
-3. Precio mínimo y máximo
+2. Precio mínimo y máximo de reserva
+3. Contar reservas con precio máximo
 ----------------------------------------
 0. Volver
 ----------------------------------------
@@ -33,9 +33,9 @@ def mostrarIngresarMenuEstadisticas(reservas):
         if opcion_seleccionada == 1:
             promedioPrecioReservas(reservas)
         elif opcion_seleccionada == 2:
-            maxPrecioReservas(reservas)
-        elif opcion_seleccionada == 3:
             minYMaxPrecioReservas(reservas)
+        elif opcion_seleccionada == 3:
+            contPrecioMaxReservas(reservas)
         else:
             if opcion_seleccionada != 0:
                 print()
