@@ -10,11 +10,11 @@ def ejecutarOpcionRegistrarse(usuarios):
         if usuario_valido:
             # Se pide el ingreso de una contraseña para el nuevo usuario y se valida
             while True:
-                contrasena_nueva = input("Ingrese su contraseña (mínimo 8 caracteres, 1 mayúscula, 1 minúscula, 1 número y 1 carácter especial): ")
+                contrasena_nueva = input("Ingrese su contraseña (mínimo 8 caracteres, 1 mayúscula, 1 minúscula y 1 número): ")
                 if validarContrasena(contrasena_nueva):
                     break
                 else:
-                    print("Contraseña inválida. Debe tener al menos 8 caracteres, incluir mayúscula, minúscula, número y carácter especial.")
+                    print("Contraseña inválida. Debe tener al menos 8 caracteres, incluir mayúscula, minúscula y número.")
 
             while True:
                 mail_nuevo = input("Ingrese su correo electrónico (gmail): ")
