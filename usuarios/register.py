@@ -8,9 +8,14 @@ def ejecutarOpcionRegistrarse(usuarios):
         usuario_valido = validarRegistro(usuario_nuevo, usuarios)
         
         if usuario_valido:
-            # Se pide el ingreso de una contrasena para el nuevo usuario
-            contrasena_nueva = input("Ingrese su contraseña: ")
-            
+            # Se pide el ingreso de una contraseña para el nuevo usuario y se valida
+            while True:
+                contrasena_nueva = input("Ingrese su contraseña (mínimo 8 caracteres, 1 mayúscula, 1 minúscula, 1 número y 1 carácter especial): ")
+                if validarContrasena(contrasena_nueva):
+                    break
+                else:
+                    print("Contraseña inválida. Debe tener al menos 8 caracteres, incluir mayúscula, minúscula, número y carácter especial.")
+
             while True:
                 mail_nuevo = input("Ingrese su correo electrónico (gmail): ")
                 if validarMail(mail_nuevo):
@@ -43,6 +48,12 @@ def validarMail(mail):
         return True
     else:
         return False
+
+
+def validarContrasena(contrasena):
+   
+    patron = r'^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{8,}$'
+    return True if re.match(patron, contrasena) else False
 
 
 def agregarUsuarioNuevo(usuario_nuevo, contrasena_nueva, mail_nuevo, usuarios):
