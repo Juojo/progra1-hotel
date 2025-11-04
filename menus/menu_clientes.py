@@ -14,7 +14,7 @@ def mostrarMenuClientes():
 ----------------------------------------
 """)
         
-def mostrarIngresarMenuClientes(clientes):
+def mostrarIngresarMenuClientes(archivo_clientes):
     mostrarMenuClientes()
     
     opcion_seleccionada = -1 # Se inicializa la variable
@@ -32,13 +32,13 @@ def mostrarIngresarMenuClientes(clientes):
                 mostrarMenuClientes()
 
         if opcion_seleccionada == 1:
-            agregar_cliente(archivo)
+            agregar_cliente(archivo_clientes)
         elif opcion_seleccionada == 2:
-            modificar_cliente(archivo)
+            modificar_cliente(archivo_clientes)
         elif opcion_seleccionada == 3:
-            baja_cliente(archivo)
+            baja_cliente(archivo_clientes)
         elif opcion_seleccionada == 4:
-            mostrar_clientes(archivo)            
+            mostrar_clientes(archivo_clientes)            
         else:
             if opcion_seleccionada != 0:
                 print()

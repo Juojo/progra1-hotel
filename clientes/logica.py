@@ -1,97 +1,18 @@
 from util import *
 import os
-'''
-def agregarCliente(clientes):
-    dni = str(pedir_entero("Ingrese el DNI del cliente:"))
-    cliente_existente = None
 
-    for cliente in clientes:
-        if cliente[3] == dni:
-            cliente_existente = cliente
-
-    if cliente_existente is not None:
-        print("Ya existe un cliente registrado con ese DNI.")
-    else:
-        nuevo_id = generarId(clientes)
-        nombre = input("Ingrese el nombre del cliente: ")
-        apellido = input("Ingrese el apellido del cliente: ")
-
-    nuevo_cliente = [nuevo_id, nombre, apellido, dni]
-    clientes.append(nuevo_cliente)
-    print("Se agrego el cliente correctamente.")
-    
-    esperarVolverMenu()
-
-def borrarCliente(clientes):
-    dni = str(pedir_entero("Ingrese el DNI del cliente:"))
-    cliente_a_borrar = None
-
-    for cliente in clientes:
-        if cliente[3] == dni:
-            cliente_a_borrar = cliente
-
-    if cliente_a_borrar is not None:
-        clientes.remove(cliente_a_borrar)
-        print("Se ha borrado el cliente correctamente.")
-    else:
-        print("Error. No hay un cliente registrado con ese DNI.")
-    
-    esperarVolverMenu()
-
-def modificarCliente(clientes):
-    dni = str(pedir_entero("Ingrese el DNI del cliente: "))
-
-    # Creamos una lista con todos los DNIs de los clientes
-    dnis = [c[3] for c in clientes]
-
-    # Verificamos si el DNI ingresado existe
-    if dni in dnis:
-      
-        indice = dnis.index(dni) # Obtenemos el indice del cliente con .index
-
-        nuevo_nombre = input("Ingrese el nuevo nombre del cliente: ")
-        nuevo_apellido = input("Ingrese el nuevo apellido del cliente: ")
-        nuevo_dni = str(pedir_entero("Ingrese el nuevo DNI del cliente (0 si no quiere modificarlo): "))
-
-        # Se verifica que el nuevo DNI no este repetido si se quiere cambiar
-        if nuevo_dni != "0":
-            if nuevo_dni in dnis and dnis.index(nuevo_dni) != indice:
-                print("Error: ya existe otro cliente con ese DNI.")
-                return clientes
-            else:
-                clientes[indice][3] = nuevo_dni 
-
-        # Actualizamos nombre y apellido
-        clientes[indice][1] = nuevo_nombre
-        clientes[indice][2] = nuevo_apellido  
-        print("Se han modificado los datos del cliente correctamente.")
-    else:
-        print("Error. No hay un cliente registrado con ese DNI.")
-
-    esperarVolverMenu()
-    
-
-def mostrarClientes(clientes):
-    print("-" * 68)
-    print(f"{'ID':<10} {'Nombre':<20} {'Apellido':<20} {'DNI':>15}")
-    print("-" * 68)
-    for cliente in clientes:
-        print(f"{cliente[0]:<10} {cliente[1]:<20} {cliente[2]:<20} {cliente[3]:>15}")
-    esperarVolverMenu()
-'''
-
-def cargar_matriz_en_archivo(clientes, archivo):
-    try:
-        lineas = [f"{id};{nombre};{apellido};{dni}\n" for id, nombre, apellido, dni in clientes]
-        arch = open(archivo, "wt",encoding="UTF-8")
-        arch.writelines(lineas)
-    except OSError as mensaje:
-        print("No se puede grabar el archivo:", mensaje)
-    finally:
-        try:
-            arch.close()
-        except NameError:
-            pass
+# def cargar_matriz_en_archivo(clientes, archivo):
+#     try:
+#         lineas = [f"{id};{nombre};{apellido};{dni}\n" for id, nombre, apellido, dni in clientes]
+#         arch = open(archivo, "wt",encoding="UTF-8")
+#         arch.writelines(lineas)
+#     except OSError as mensaje:
+#         print("No se puede grabar el archivo:", mensaje)
+#     finally:
+#         try:
+#             arch.close()
+#         except NameError:
+#             pass
 
 def mostrar_clientes(archivo):
     try:
@@ -263,6 +184,3 @@ def modificar_cliente(archivo):
     else:
         os.remove(temp)
         print(f"No se encontró el cliente con el DNI N° {dni_modificar}.")
-
-
-archivo = "clientes/datos_clientes.txt"
