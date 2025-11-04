@@ -4,5 +4,11 @@
         "capacidad": "10",
         "estado": "Ocupada",
         "precio": 200000
+    },
+    "hab_203": {
+        "tipo": "adf",
+        "capacidad": 2,
+        "estado": "libre",
+        "precio": 100
     }
 }

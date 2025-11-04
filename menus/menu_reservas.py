@@ -33,8 +33,7 @@ def mostrarIngresarMenuReservas(reservas, habitaciones, clientes):
                 mostrarMenuReservas()
         
         if opcion_seleccionada == 1:
-            #agregar_reserva(archivo)
-            pass
+            agregarReserva(reservas, habitaciones, clientes)
         elif opcion_seleccionada == 2:
             modificarReserva(reservas)
         elif opcion_seleccionada == 3:

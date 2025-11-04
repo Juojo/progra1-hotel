@@ -27,8 +27,16 @@ def agregarReserva(reservas, habitaciones, clientes):
 def ingresarNuevaReserva(reservas, habitaciones, clientes):
     print("Ingrese el ID del cliente que realiza la reserva: ", end="")
     id_cliente = pedir_entero("")
-    print("Ingrese la habitacion de la reserva (ID): ", end="")
-    id_habitacion = pedir_entero("")
+
+    primer_iteracion = True
+    id_habitacion = 0
+    while "hab_"+str(id_habitacion) not in habitaciones or primer_iteracion:
+        if not primer_iteracion:
+            print("La habitacion no existe, ingrese otro valor")
+        primer_iteracion = False
+        print("Ingrese la habitacion de la reserva (ID): ", end="")
+        id_habitacion = pedir_entero("")
+
     print("--- Ingrese la fecha de ingreso ---")
     fecha_ingreso = pedir_fecha()
     print("--- Ingrese la fecha de egreso ---")
