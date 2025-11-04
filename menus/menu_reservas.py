@@ -15,7 +15,7 @@ def mostrarMenuReservas():
 ----------------------------------------
 """)
         
-def mostrarIngresarMenuReservas(reservas, habitaciones, clientes):    
+def mostrarIngresarMenuReservas(archivo_reservas, archivo_habitaciones, archivo_clientes):    
     mostrarMenuReservas()
 
     opcion_seleccionada = -1 # Se inicializa la variable
@@ -33,15 +33,15 @@ def mostrarIngresarMenuReservas(reservas, habitaciones, clientes):
                 mostrarMenuReservas()
         
         if opcion_seleccionada == 1:
-            agregarReserva(reservas, habitaciones, clientes)
+            agregar_reserva(archivo_reservas, archivo_habitaciones, archivo_clientes)
         elif opcion_seleccionada == 2:
-            modificarReserva(reservas)
+            modificar_reserva(archivo_reservas)
         elif opcion_seleccionada == 3:
-            darBajaReserva(reservas)
+            dar_baja_reserva(archivo_reservas)
         elif opcion_seleccionada == 4:
-            mostrarReservas(reservas)
+            mostrar_reservas(archivo_reservas)
         elif opcion_seleccionada == 5:
-            aplicar_descuento(reservas)
+            aplicar_descuento(archivo_reservas)
         else:
             if opcion_seleccionada != 0:
                 print()

@@ -73,7 +73,7 @@ def mostrarMenuPrincipal():
 """)
 
         
-def mostrarIngresarMenuPrincipal(archivo_clientes, reservas, habitaciones, habitaciones_baja):
+def mostrarIngresarMenuPrincipal(archivo_clientes, archivo_reservas, archivo_habitaciones, habitaciones_baja):
     mostrarMenuPrincipal()
     
     opcion_seleccionada = -1
@@ -93,9 +93,9 @@ def mostrarIngresarMenuPrincipal(archivo_clientes, reservas, habitaciones, habit
         if opcion_seleccionada == 1:
             mostrarIngresarMenuClientes(archivo_clientes)
         elif opcion_seleccionada == 2:
-            mostrarIngresarMenuReservas(reservas, habitaciones)
+            mostrarIngresarMenuReservas(archivo_reservas, archivo_habitaciones, archivo_clientes)
         elif opcion_seleccionada == 3:
-            mostrarIngresarMenuHabitaciones(habitaciones, habitaciones_baja)
+            mostrarIngresarMenuHabitaciones(archivo_habitaciones, habitaciones_baja)
         elif opcion_seleccionada == 4:
             mostrarIngresarMenuEstadisticas(reservas)
         else:

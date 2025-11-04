@@ -4,8 +4,8 @@ from reservas.datos import reservas, generarPrecioTotalReservasDefault
 import manejo_archivos
 
 def main():
-    archivo_clientes = "clientes/datos_clientes.txt"
-
+    archivo_clientes = "./clientes/datos_clientes.txt"    
+    archivo_reservas = "./reservas/datos_reservas.txt"
     habitaciones = manejo_archivos.leerArchivoJson("h") # "h" es el prefijo definido para la ruta del archivo habitaciones.json
     habitaciones_baja = manejo_archivos.leerArchivoJson("hb")
 
@@ -13,7 +13,7 @@ def main():
     login_exitoso = mostrarIngresarMenuLogin()
 
     if login_exitoso:
-        mostrarIngresarMenuPrincipal(archivo_clientes, reservas, habitaciones, habitaciones_baja)
+        mostrarIngresarMenuPrincipal(archivo_clientes, archivo_reservas, habitaciones, habitaciones_baja)
     print("Fin programa")
 
 if __name__ == "__main__":

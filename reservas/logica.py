@@ -3,6 +3,17 @@ from datetime import date
 from functools import reduce
 import json
 
+def dividir_linea_reservas(linea):
+    if linea.strip() == "": # Si la línea está vacía o tiene saltos se ignora
+        return None
+    
+    partes = linea.strip().split(";")
+    if len(partes) == 7:
+        id_reserva, id_cliente, id_habitacion, fecha_ingreso, fecha_egreso, estado, precio_total = partes
+        return id_reserva, id_cliente, id_habitacion, fecha_ingreso, fecha_egreso, estado, precio_total
+    else:
+        return None
+    
 def calcularPrecio(precio_habitacion, fecha_ingreso, fecha_egreso):
     extraerDia = lambda fecha_string: int(fecha_string[:2])
     extraerMes = lambda fecha_string: int(fecha_string[3:5])
@@ -16,7 +27,7 @@ def calcularPrecio(precio_habitacion, fecha_ingreso, fecha_egreso):
     calcular = lambda precio, dias: precio * dias
     return calcular(precio_habitacion, delta.days)
 
-def agregarReserva(reservas, habitaciones, clientes):
+def agregar_reserva(reservas, habitaciones, clientes):
     imprimirTituloOpcion("Agregar reserva")
 
     ingresarNuevaReserva(reservas, habitaciones, clientes)
@@ -27,16 +38,8 @@ def agregarReserva(reservas, habitaciones, clientes):
 def ingresarNuevaReserva(reservas, habitaciones, clientes):
     print("Ingrese el ID del cliente que realiza la reserva: ", end="")
     id_cliente = pedir_entero("")
-
-    primer_iteracion = True
-    id_habitacion = 0
-    while "hab_"+str(id_habitacion) not in habitaciones or primer_iteracion:
-        if not primer_iteracion:
-            print("La habitacion no existe, ingrese otro valor")
-        primer_iteracion = False
-        print("Ingrese la habitacion de la reserva (ID): ", end="")
-        id_habitacion = pedir_entero("")
-
+    print("Ingrese la habitacion de la reserva (ID): ", end="")
+    id_habitacion = pedir_entero("")
     print("--- Ingrese la fecha de ingreso ---")
     fecha_ingreso = pedir_fecha()
     print("--- Ingrese la fecha de egreso ---")
@@ -69,7 +72,7 @@ def buscarPrecioHabitacion(id_habitacion, habitaciones):
     else:
         return 0
 
-def modificarReserva(reservas):
+def modificar_reserva(reservas):
     Id_reserva = pedir_entero("Ingrese el ID de la reserva: ")
 
     # Se crea una lista con todos los IDs de reservas
@@ -107,18 +110,7 @@ def modificarReserva(reservas):
 
     esperarVolverMenu()
 
-def mostrarReservas(reservas):
-    print("-" * 70)
-    print(f"{'ID':<10} {'Cliente':<10} {'Habitacion':<10} {'Ingreso':<10} {'Egreso':<10} {'Precio Total':>15}")
-    print("-" * 70)
-
-    validarPrint = lambda valor: valor if valor != None else "No encontrado"
-
-    for reserva in reservas:
-        print(f"{validarPrint(reserva[0]):<10} {validarPrint(reserva[1]):<10} {validarPrint(reserva[2]):<10} {validarPrint(reserva[3]):<10} {validarPrint(reserva[4]):<10} {validarPrint(reserva[6]):>15}")
-    esperarVolverMenu()
-
-def darBajaReserva(reservas):
+def dar_baja_reserva(reservas):
     imprimirTituloOpcion("dar de baja una reserva")
     
     print("Ingrese la ID de la reserva que quiere dar de baja: ", end="")
@@ -161,20 +153,9 @@ def aplicar_descuento(reservas):
         print("No se encontró una reserva con ese ID.")
 
     esperarVolverMenu()
-
-archivo = "reservas/datos_reservas.txt"
-
-def dividir_linea_reservas(linea):
-    if linea.strip() == "": # Si la línea está vacía o tiene saltos se ignora
-        return None
-    
-    partes = linea.strip().split(";")
-    if len(partes) == 7:
-        id_reserva, id_cliente, id_habitacion, fecha_ingreso, fecha_egreso, estado, precio_total = partes
-        return id_reserva, id_cliente, id_habitacion, fecha_ingreso, fecha_egreso, estado, precio_total
-    else:
-        return None
-    
+'''
+ARCHIVOS
+'''
 def mostrar_reservas(archivo):
     try:
         arch = open(archivo, "r", encoding="UTF-8")
@@ -194,4 +175,56 @@ def mostrar_reservas(archivo):
             arch.close()
         except:
             print("No se pudo cerrar el archivo.")
+    esperarVolverMenu()
+
+def agregar_reserva(archivo_reservas, archivo_habitaciones, archivo_clientes):
+    try:
+        arch = open(archivo_reservas, "r", encoding="UTF-8")
+        linea = arch.readline()
+        while linea:
+            datos = dividir_linea_reservas(linea)
+            if datos:
+                id_reserva, id_cliente, id_habitacion, fecha_ingreso, fecha_egreso, estado, precio_total = datos
+            linea = arch.readline()
+    except FileNotFoundError:
+        pass
+    finally:
+        try:
+            arch.close()
+        except:
+            pass
+
+    id_reserva = generar_id_archivo(archivo_reservas)
+    print("Ingrese el ID del cliente que realiza la reserva: ", end="")
+    id_cliente = pedir_entero("")
+    print("Ingrese la habitacion de la reserva (ID): ", end="")
+    id_habitacion = pedir_entero("")
+    print("--- Ingrese la fecha de ingreso ---")
+    fecha_ingreso = pedir_fecha()
+    print("--- Ingrese la fecha de egreso ---")
+    fecha_egreso = pedir_fecha()
+    estado = True
+
+     # Buscar el precio de la habitación
+    precio_habitacion = buscarPrecioHabitacion(id_habitacion, archivo_habitaciones)
+
+    # Calcular precio total
+    precio_total = calcularPrecio(precio_habitacion, fecha_ingreso, fecha_egreso)
+
+    try:
+        arch = open(archivo_reservas, "a", encoding="UTF-8")
+        arch.write(f"{id_reserva};{id_cliente};{id_habitacion};{fecha_ingreso};{fecha_egreso};{estado};{precio_total}\n")
+        print("Se agregó la reserva correctamente.")
+    except OSError as mensaje:
+        print("No se puede grabar el archivo:", mensaje)
+    finally:
+        try:
+            arch.close()
+        except NameError:
+            pass
+
+    # Busca el nombre del cliente
+    #cliente = list(filter(lambda c: c[0] == id_cliente, clientes))[0] # Devuelve la primera posicion de la lista
+    #print(f"Reserva registrada para {cliente[1]} {cliente[2]} con un costo total de ${precio_total}")
+
     esperarVolverMenu()
