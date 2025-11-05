@@ -35,7 +35,7 @@ def mostrarIngresarMenuReservas(archivo_reservas, archivo_habitaciones, archivo_
         if opcion_seleccionada == 1:
             agregar_reserva(archivo_reservas, archivo_habitaciones, archivo_clientes)
         elif opcion_seleccionada == 2:
-            modificar_reserva(archivo_reservas)
+            modificar_reserva(archivo_reservas, archivo_habitaciones)
         elif opcion_seleccionada == 3:
             dar_baja_reserva(archivo_reservas)
         elif opcion_seleccionada == 4:

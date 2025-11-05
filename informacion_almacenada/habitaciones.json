@@ -1,14 +1,26 @@
 {
+    "hab_201": {
+        "tipo": "Suite",
+        "capacidad": "02",
+        "estado": "Libre",
+        "precio": 20000
+    },
     "hab_202": {
         "tipo": "Suite",
         "capacidad": "10",
         "estado": "Ocupada",
-        "precio": 200000
+        "precio": 20000
     },
     "hab_203": {
-        "tipo": "adf",
-        "capacidad": 2,
-        "estado": "libre",
-        "precio": 100
+        "tipo": "Residencial",
+        "capacidad": "03",
+        "estado": "Libre",
+        "precio": 50000
+    },
+        "hab_204": {
+        "tipo": "Presidencial",
+        "capacidad": "05",
+        "estado": "Libre",
+        "precio": 135000
     }
 }
