@@ -1,21 +1,35 @@
+import json
 from util import *
 import manejo_archivos
 
 formatearCodigoHab = lambda numero_hab: "hab_"+str(numero_hab)
 
 def mostrarHabitaciones(habitaciones):
-    print("-" * 66)
-    print(f"{'Nro_habitación':<15} {'Tipo':<15} {'Capacidad':<10} {'Estado':<12} {'Precio':>10}")
-    print("-" * 66)
-    
-    for codigo_hab, datos_hab in habitaciones.items(): # Itera sobre cada key, value del diccionario
-        numero = codigo_hab.split("_")[1] # Formato recibido: "hab_101"
-        tipo = datos_hab["tipo"]
-        capacidad = str(datos_hab["capacidad"])
-        estado = datos_hab["estado"]
-        precio = str(datos_hab["precio"])
+    try:
+        archivo = open(habitaciones, "r")
 
-        print(f"{numero:<15} {tipo:<15} {capacidad:<10} {estado:<12} {precio:>10}")
+        try:
+            print("-" * 66)
+            print(f"{'Nro_habitación':<15} {'Tipo':<15} {'Capacidad':<10} {'Estado':<12} {'Precio':>10}")
+            print("-" * 66)
+
+            datos = json.load(archivo)
+    
+            for codigo_hab, datos_hab in datos.items(): # Itera sobre cada key, value del diccionario
+                numero = codigo_hab.split("_")[1] # Formato recibido: "hab_101"
+                tipo = datos_hab["tipo"]
+                capacidad = str(datos_hab["capacidad"])
+                estado = datos_hab["estado"]
+                precio = str(datos_hab["precio"])
+
+                print(f"{numero:<15} {tipo:<15} {capacidad:<10} {estado:<12} {precio:>10}")
+
+        except json.JSONDecodeError:
+            print("Error al decodificar el archivo JSON.")
+    except FileNotFoundError as e:
+        print("No se encontro el archivo:", e)
+    except Exception as e:
+        print("Ocurrio un error con la lectura del archivo:", e)
     
     esperarVolverMenu()
 
