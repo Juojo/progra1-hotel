@@ -13,7 +13,7 @@ def mostrarMenuEstadisticas():
 ----------------------------------------
 """)
 
-def mostrarIngresarMenuEstadisticas(reservas):    
+def mostrarIngresarMenuEstadisticas(archivo_reservas):    
     mostrarMenuEstadisticas()
 
     opcion_seleccionada = -1
@@ -31,11 +31,11 @@ def mostrarIngresarMenuEstadisticas(reservas):
                 mostrarMenuEstadisticas()   
         
         if opcion_seleccionada == 1:
-            promedioPrecioReservas(reservas)
+            promedioPrecioReservas(archivo_reservas)
         elif opcion_seleccionada == 2:
-            minYMaxPrecioReservas(reservas)
+            minYMaxPrecioReservas(archivo_reservas)
         elif opcion_seleccionada == 3:
-            contPrecioMaxReservas(reservas)
+            contPrecioMaxReservas(archivo_reservas)
         else:
             if opcion_seleccionada != 0:
                 print()

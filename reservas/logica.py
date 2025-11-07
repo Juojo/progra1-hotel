@@ -1,7 +1,5 @@
 from util import *
 from datetime import date
-from functools import reduce
-import json
 import os
 
 def dividir_linea_reservas(linea):

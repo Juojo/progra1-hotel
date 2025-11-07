@@ -1,18 +1,29 @@
 from util import *
 from functools import reduce
+from reservas.logica import dividir_linea_reservas
 
-def contPrecioMaxReservas(reservas):
+def contPrecioMaxReservas(archivo_reservas):
     imprimirTituloOpcion("Contar reservas con precio máximo")
-    
-    precios = [reserva[6] for reserva in reservas] 
 
-    resultados_precios_maximos = {
-        "precio_max": max(precios),
-        "cantidad": sum(1 for reserva in reservas if reserva[6] == max(precios))
-    }
-    
-    print(f"Precio máximo: {resultados_precios_maximos['precio_max']}")
-    print(f"Cantidad de reservas con ese precio: {resultados_precios_maximos['cantidad']}")
+    try:
+        with open(archivo_reservas, "rt", encoding="UTF-8") as arch:
+            reservas = [dividir_linea_reservas(linea) for linea in arch if dividir_linea_reservas(linea)]
+    except FileNotFoundError:
+        print("El archivo no existe.")
+        esperarVolverMenu()
+        return
+
+    if not reservas:
+        print("No hay reservas registradas.")
+        esperarVolverMenu()
+        return
+
+    precios = [float(reserva[6]) for reserva in reservas]
+    precio_max = max(precios)
+    cantidad_max = sum(1 for p in precios if p == precio_max)
+
+    print(f"Precio máximo: ${precio_max:.2f}")
+    print(f"Cantidad de reservas con ese precio: {cantidad_max}")
     esperarVolverMenu()
 
 def minPrecioReserva(reservas, i=0):
@@ -37,10 +48,18 @@ def maxPrecioReserva(reservas, i=0):
         else:
             return max_siguiente
 
-def minYMaxPrecioReservas(reservas):
+def minYMaxPrecioReservas(archivo_reservas):
     imprimirTituloOpcion("Precio mínimo y máximo")
 
-    if len(reservas) == 0:
+    try:
+        with open(archivo_reservas, "rt", encoding="UTF-8") as arch:
+            reservas = [dividir_linea_reservas(linea) for linea in arch if dividir_linea_reservas(linea)]
+    except FileNotFoundError:
+        print("El archivo no existe.")
+        esperarVolverMenu()
+        return
+
+    if not reservas:
         print("No hay reservas registradas.")
         esperarVolverMenu()
         return
@@ -48,16 +67,29 @@ def minYMaxPrecioReservas(reservas):
     minimo = minPrecioReserva(reservas)
     maximo = maxPrecioReserva(reservas)
 
-    print(f"Precio mínimo de reserva: {minimo}")
-    print(f"Precio máximo de reserva: {maximo}")
+    print(f"Precio mínimo de reserva: ${float(minimo):.2f}")
+    print(f"Precio máximo de reserva: ${float(maximo):.2f}")
     esperarVolverMenu()
 
-def promedioPrecioReservas(reservas):
+def promedioPrecioReservas(archivo_reservas):
     imprimirTituloOpcion("Promedio de precios de reservas")
 
-    precios = [reserva[6] for reserva in reservas]
+    try:
+        with open(archivo_reservas, "rt", encoding="UTF-8") as arch:
+            reservas = [dividir_linea_reservas(linea) for linea in arch if dividir_linea_reservas(linea)]
+    except FileNotFoundError:
+        print("El archivo no existe.")
+        esperarVolverMenu()
+        return
+
+    if not reservas:
+        print("No hay reservas registradas.")
+        esperarVolverMenu()
+        return
+
+    precios = [float(reserva[6]) for reserva in reservas]
     total = reduce(lambda total_acumulado, precio: total_acumulado + precio, precios)
     promedio = total / len(precios)
-    
-    print(f"Promedio de precios de las reservas: {promedio:.2f}")
+
+    print(f"Promedio de precios de las reservas: ${promedio:.2f}")
     esperarVolverMenu()

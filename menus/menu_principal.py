@@ -97,7 +97,7 @@ def mostrarIngresarMenuPrincipal(archivo_clientes, archivo_reservas, archivo_hab
         elif opcion_seleccionada == 3:
             mostrarIngresarMenuHabitaciones(archivo_habitaciones, habitaciones_baja)
         elif opcion_seleccionada == 4:
-            mostrarIngresarMenuEstadisticas(reservas)
+            mostrarIngresarMenuEstadisticas(archivo_reservas)
         else:
             if opcion_seleccionada != 0:
                 print()
