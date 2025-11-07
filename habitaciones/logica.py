@@ -33,10 +33,12 @@ def mostrarHabitaciones(habitaciones):
     
     esperarVolverMenu()
 
-def mostrarHabitacionesBaja(habitaciones_baja):
+def mostrarHabitacionesBaja(ruta_habitaciones_baja):
     print("-" * 87)
     print(f"{'Nro_habitación':<15} {'Tipo':<15} {'Capacidad':<10} {'Estado':<12} {'Precio':<10} {'Razón':>10}")
     print("-" * 87)
+
+    habitaciones_baja = manejo_archivos.leerArchivoJson(ruta_habitaciones_baja)
 
     for codigo_hab, datos_hab in habitaciones_baja.items(): # Itera sobre cada key, value del diccionario
         numero = codigo_hab.split("_")[1] # Formato recibido: "hab_101"
@@ -50,9 +52,11 @@ def mostrarHabitacionesBaja(habitaciones_baja):
    
     esperarVolverMenu()
 
-def modificarHabitacion(habitaciones):
+def modificarHabitacion(ruta_habitaciones):
     numero_hab = pedir_entero("Ingrese el Nro. de habitación: ")
     cod_hab = formatearCodigoHab(numero_hab)
+
+    habitaciones = manejo_archivos.leerArchivoJson(ruta_habitaciones)
 
     if cod_hab in habitaciones:
         nuevo_tipo = input("Ingrese el nuevo tipo (0 para no modificar): ")
@@ -81,9 +85,12 @@ def modificarHabitacion(habitaciones):
 
     esperarVolverMenu()
 
-def bajaHabitacion(habitaciones, habitaciones_baja):
+def bajaHabitacion(ruta_habitaciones, ruta_habitaciones_baja):
     numero_hab = pedir_entero("Ingrese el Nro. de habitación: ")
     cod_hab_buscado = formatearCodigoHab(numero_hab)
+
+    habitaciones = manejo_archivos.leerArchivoJson(ruta_habitaciones)
+    habitaciones_baja = manejo_archivos.leerArchivoJson(ruta_habitaciones_baja)
 
     if cod_hab_buscado in habitaciones:
         # Se duplica la habitacion y se conserva su codigo
@@ -105,9 +112,12 @@ def bajaHabitacion(habitaciones, habitaciones_baja):
 
     esperarVolverMenu()
 
-def reintegrarHabitacion(habitaciones, habitaciones_baja):
+def reintegrarHabitacion(ruta_habitaciones, ruta_habitaciones_baja):
     numero_hab = pedir_entero("Ingrese el Nro. de habitación a reintegrar: ")
     cod_hab_buscado = formatearCodigoHab(numero_hab)
+
+    habitaciones = manejo_archivos.leerArchivoJson(ruta_habitaciones)
+    habitaciones_baja = manejo_archivos.leerArchivoJson(ruta_habitaciones_baja)
 
     if cod_hab_buscado in habitaciones_baja:
         # Se duplica la habitacion y se conserva su codigo
@@ -126,7 +136,7 @@ def reintegrarHabitacion(habitaciones, habitaciones_baja):
 
     esperarVolverMenu()
 
-def agregarHabitacion(habitaciones):
+def agregarHabitacion(ruta_habitaciones):
     num_hab = str(pedir_entero("Ingrese el numero de habitacion"))
     tipo = input("Ingrese el tipo de habitación: ")
     capacidad = pedir_entero("Ingrese la capacidad: ")
@@ -142,6 +152,7 @@ def agregarHabitacion(habitaciones):
         }
     }
 
+    habitaciones = manejo_archivos.leerArchivoJson(ruta_habitaciones)
     manejo_archivos.agregarHabitacion(nueva_habitacion, habitaciones)
     print(f"\nLa habitación {num_hab} se agregó correctamente.")
     
