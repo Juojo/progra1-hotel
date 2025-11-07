@@ -1,19 +1,6 @@
 from util import *
 import os
 
-# def cargar_matriz_en_archivo(clientes, archivo):
-#     try:
-#         lineas = [f"{id};{nombre};{apellido};{dni}\n" for id, nombre, apellido, dni in clientes]
-#         arch = open(archivo, "wt",encoding="UTF-8")
-#         arch.writelines(lineas)
-#     except OSError as mensaje:
-#         print("No se puede grabar el archivo:", mensaje)
-#     finally:
-#         try:
-#             arch.close()
-#         except NameError:
-#             pass
-
 def mostrar_clientes(archivo):
     try:
         arch = open(archivo, "r", encoding="UTF-8")
