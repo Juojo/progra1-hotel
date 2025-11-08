@@ -22,9 +22,9 @@ def mostrar_clientes(archivo):
             print("No se pudo cerrar el archivo.")
     esperarVolverMenu()
 
-def agregar_cliente(archivo):    
+def agregar_cliente(archivo):
     nuevo_dni = str(pedir_entero("Ingrese el DNI del cliente: "))
-    cliente_existente = False
+    dnis_existentes = set()
 
     try:
         arch = open(archivo, "r", encoding="UTF-8")
@@ -33,9 +33,7 @@ def agregar_cliente(archivo):
             datos = dividir_linea_clientes(linea)
             if datos:
                 id, nombre, apellido, dni = datos
-                if dni == nuevo_dni:
-                    cliente_existente = True
-                    break
+                dnis_existentes.add(str(dni)) # Se agrega el dni al conjunto (no pueden existir dnis repetidos)
             linea = arch.readline()
     except FileNotFoundError:
         pass
@@ -45,7 +43,7 @@ def agregar_cliente(archivo):
         except:
             pass
 
-    if cliente_existente:
+    if nuevo_dni in dnis_existentes:
         print("Ya existe un cliente con ese DNI.")
         esperarVolverMenu()
         return
